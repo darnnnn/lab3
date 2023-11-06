@@ -1,4 +1,4 @@
-public class Policeman extends Human implements ActionsOfPoliceman{
+public class Policeman extends Human implements StartFightWithAborigine, TakeWeapon{
 
   public Policeman() {
         super();
@@ -66,7 +66,7 @@ public class Policeman extends Human implements ActionsOfPoliceman{
 
   @Override 
   public void setStat(Status stat) {
-    this.stat = stat;
+    super.setStat(stat);
     if (stat == Status.DEAD){
       System.out.println(getName() + " is dead. Press f to pay respect");
       newDeadPoliceman();

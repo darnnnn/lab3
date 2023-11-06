@@ -5,7 +5,7 @@ public abstract class Human{ //класс-родитель для Policeman и A
   private double attack;
   private String country;
   private double health = 100;
-  protected Status stat = Status.ALIVE; //модификатор доступа protected, тк в классах наследниках надо будет переопределить сеттер
+  private Status stat = Status.ALIVE; 
 
   public Human(){
     this("Unknown", 0, "unknown");

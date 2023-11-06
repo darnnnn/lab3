@@ -13,5 +13,5 @@ public class Main{
 		world.createTeamOfAborigines(a1, a2, a3, a4);
 	    world.createTeamOfPolicemans(p1, p2, p3, p4);
 		world.startWar();
-	}
+	  }
 }

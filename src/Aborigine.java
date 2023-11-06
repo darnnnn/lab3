@@ -1,4 +1,4 @@
-public class Aborigine extends Human implements ActionsOfAborigine{
+public class Aborigine extends Human implements StartFightWithPoliceman, TakeWeapon{
 
   public Aborigine() {
         super();
@@ -74,7 +74,7 @@ public class Aborigine extends Human implements ActionsOfAborigine{
 
   @Override
   public void setStat(Status stat) {
-    this.stat = stat;
+    super.setStat(stat);
     if (stat == Status.DEAD){
       System.out.println(getName() + " is dead. He deserved it");
       newDeadAborigine();
