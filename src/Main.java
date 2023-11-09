@@ -10,8 +10,8 @@ public class Main{
 		Policeman p2 = new Policeman("Officer Joseph Galvez", 75);
 		Policeman p3 = new Policeman("Officer Kate", 45, "France");
 		Policeman p4 = new Policeman("Officer Hopper", 70);
-		world.createTeamOfAborigines(a1, a2, a3, a4);
-	    world.createTeamOfPolicemans(p1, p2, p3, p4);
+		Team1.create(a1, a2, a3, a4);
+	    Team2.create(p1, p2, p3, p4);
 		War.start();
 	  }
 }

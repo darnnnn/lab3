@@ -20,7 +20,7 @@ public class Result{
 	public static void result() { // подвожу итог битвы
 	   System.out.println("Amount of dead aborigines is " + Aborigine.getAmountOfDeadAborigines() + "\nAmount of captive aborigines is " + Aborigine.getAmountOfCaptiveAborigines() + "\nAmount of dead policemans is " + Policeman.getAmountOfDeadPolicemans());
        
-       World.getTeam1().forEach(a -> Result.checkAlive(a)); // получаю массив всех аборигенов с помощью getTeam1(), для этого массива выполняю метод forEach, с помощью которого для каждого элемента из массива выполняю метод checkAlive()
+       Team1.get().forEach(a -> Result.checkAlive(a)); // получаю массив всех аборигенов с помощью getTeam1(), для этого массива выполняю метод forEach, с помощью которого для каждого элемента из массива выполняю метод checkAlive()
        switch(namesOfAliveAborigines.size()){
          case 0 :
          	break;
@@ -32,7 +32,7 @@ public class Result{
          	break;
        }
        
-       World.getTeam2().forEach(p -> Result.checkAlive(p)); // то же самое для второй команды
+       Team2.get().forEach(p -> Result.checkAlive(p)); // то же самое для второй команды
        switch(namesOfAlivePolicemans.size()){
          case 0 :
          	break;
