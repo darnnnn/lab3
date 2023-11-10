@@ -1,6 +1,8 @@
+package humans;
+
 import java.util.Objects;
 
-public abstract class Human{ //класс-родитель для Policeman и Aborigine
+public abstract class Human{ 
   private String name;
   private double attack;
   private String country;
@@ -49,7 +51,7 @@ public abstract class Human{ //класс-родитель для Policeman и A
   public void setStat(Status stat) {
     this.stat = stat;
     if (stat == Status.ALIVE){
-      System.out.println(name + " is alive"); // остальные статусы буду расписывать при переопределении
+      System.out.println(name + " is alive"); 
     } 
   }
 

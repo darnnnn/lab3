@@ -1,3 +1,8 @@
+package humans;
+
+import weapons.*;
+import teams.*;
+
 public class Aborigine extends Human implements StartFightWithPoliceman, TakeWeapon{
 
   public Aborigine() {
@@ -12,27 +17,7 @@ public class Aborigine extends Human implements StartFightWithPoliceman, TakeWea
         super(name, attack, country);
     }
 
-  private static int amountOfDeadAborigines; // кол-во аборигенов со stat == Status.DEAD
-
-  private static int amountOfCaptiveAborigines; // кол-во аборигенов со stat == Status.IN_CAPTIVITY
-
-  public static int getAmountOfDeadAborigines(){
-    return amountOfDeadAborigines;
-  }
-
-  public static int getAmountOfCaptiveAborigines(){
-    return amountOfCaptiveAborigines;
-  }
-
-  public static void newDeadAborigine(){
-    amountOfDeadAborigines++;
-  }
-
-  public static void newCaptiveAborigine(){
-    amountOfCaptiveAborigines++;
-  }  
-
-  public void takeWeapon(Weapons weapon){ // абориген берет оружие и в зависимости от этого меняет уровень своей атаки
+  public void takeWeapon(Weapons weapon){ 
     switch (weapon) {
     case STICK: 
       setAttack(getAttack() + 30); 
@@ -77,11 +62,11 @@ public class Aborigine extends Human implements StartFightWithPoliceman, TakeWea
     super.setStat(stat);
     if (stat == Status.DEAD){
       System.out.println(getName() + " is dead. He deserved it");
-      newDeadAborigine();
+      Team1.newDeadAborigine();
     }
     if (stat == Status.IN_CAPTIVITY){
       System.out.println(getName() + " in captivity. He will tell us everything");
-      newCaptiveAborigine();
+      Team1.newCaptiveAborigine();
     }
   }
 

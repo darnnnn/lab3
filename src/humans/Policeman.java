@@ -1,3 +1,8 @@
+package humans;
+
+import weapons.*;
+import teams.*;
+
 public class Policeman extends Human implements StartFightWithAborigine, TakeWeapon{
 
   public Policeman() {
@@ -12,17 +17,7 @@ public class Policeman extends Human implements StartFightWithAborigine, TakeWea
         super(name, attack, country);
     } 
 
-  private static int amountOfDeadPolicemans;
-
-  public static int getAmountOfDeadPolicemans(){ // кол-во полицеских со статусом  Status.DEAD
-    return amountOfDeadPolicemans; 
-  }
-  
-  public static void newDeadPoliceman(){
-    amountOfDeadPolicemans++;
-  }
-
-  public void takeWeapon(Weapons weapon){ // полицеский берет оружие и в зависимости от этого меняет атаку
+  public void takeWeapon(Weapons weapon){ 
     switch (weapon) {
     case STICK: 
       setAttack(getAttack() - 10); 
@@ -41,7 +36,7 @@ public class Policeman extends Human implements StartFightWithAborigine, TakeWea
 
   // подробнее принцип борьбы расписан в классе Aborigine 
   
-  public void startFight(Aborigine a){ // метод для борьбы полицейского и аборигена
+  public void startFight(Aborigine a){ 
     while ( a.getHealth() > 0 && getHealth() > 0 ){
       a.setHealth(a.getHealth() - 0.5 * getAttack());
       System.out.println(getName() + " hit " + a.getName());
@@ -69,7 +64,7 @@ public class Policeman extends Human implements StartFightWithAborigine, TakeWea
     super.setStat(stat);
     if (stat == Status.DEAD){
       System.out.println(getName() + " is dead. Press f to pay respect");
-      newDeadPoliceman();
+      Team2.newDeadPoliceman();
     }
   }
 

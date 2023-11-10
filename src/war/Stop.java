@@ -1,7 +1,9 @@
+package war;
+
 import java.lang.Thread;
 
 public class Stop{ // класс для красивого вывода программы
-	public static void stop(){
+	public void stop(){
 	  try {
         Thread.sleep(2000); //  приостанавливаю выполнение текущего потока на 2 секунды 
       } catch (InterruptedException e) { 
