@@ -1,15 +1,17 @@
 package world;
 
+import war.ResultOfWar;
+
 public class World { 
 
-	private Locations location; 
+	private static Locations location; 
 
 	public World(){
 		setLocation(Locations.ISLAND); 
     }
 
-    public void setLocation(Locations location){
-		this.location = location;
+    public static void setLocation(Locations location){
+		World.location = location;
 		switch(location){
 		case ISLAND:
             System.out.println("Aborigines jumping around the fire");

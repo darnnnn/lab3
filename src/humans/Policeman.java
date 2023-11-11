@@ -33,8 +33,6 @@ public class Policeman extends Human implements StartFightWithAborigine, TakeWea
       break;
     }
   }
-
-  // подробнее принцип борьбы расписан в классе Aborigine 
   
   public void startFight(Aborigine a){ 
     while ( a.getHealth() > 0 && getHealth() > 0 ){
@@ -62,9 +60,10 @@ public class Policeman extends Human implements StartFightWithAborigine, TakeWea
   @Override 
   public void setStat(Status stat) {
     super.setStat(stat);
+    Team2 t2 =new Team2();
     if (stat == Status.DEAD){
       System.out.println(getName() + " is dead. Press f to pay respect");
-      Team2.newDeadPoliceman();
+      t2.newDeadPoliceman();
     }
   }
 

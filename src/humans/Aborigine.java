@@ -34,22 +34,22 @@ public class Aborigine extends Human implements StartFightWithPoliceman, TakeWea
     }
   }
 
-  public void startFight(Policeman p){ // метод для описания борьбы между аборигеном и полицейским
-    while ( p.getHealth() > 0 && getHealth() > 0 ){ // драка идет пока оба живы, то есть здоровье больше нуля
-      p.setHealth(p.getHealth() - 0.5 * getAttack()); // момент удара, полицейскому снижается здоровье на половину атаки аборигена
+  public void startFight(Policeman p){ 
+    while ( p.getHealth() > 0 && getHealth() > 0 ){ 
+      p.setHealth(p.getHealth() - 0.5 * getAttack()); 
       System.out.println(getName() + " hit " + p.getName());
-        if (p.getHealth() <= 0 ){ // если после удара здоровье полицейского меньше нуля, он умирает и битва заканчивается
+        if (p.getHealth() <= 0 ){ 
          p.setStat(Status.DEAD);
          break;
         }
       System.out.println(p.getName() + " has " + p.getHealth() + " health"); 
-      setHealth(getHealth() - 0.5 * p.getAttack()); // ответный удар от полицейского, здоровье аборигена понижается на половину атаки полицеского
+      setHealth(getHealth() - 0.5 * p.getAttack()); 
       System.out.println(p.getName() + " hit " + getName());
-        if (getHealth() < 20 && getHealth() > 0) { // если здоровье аборигена от 20 до 0, он попадает в плен 
-          setStat(Status.IN_CAPTIVITY); // я решила что в плену может быть только абориген
+        if (getHealth() < 20 && getHealth() > 0) { 
+          setStat(Status.IN_CAPTIVITY); 
           break;
         }
-        if (getHealth() <= 0 ){ // если здоровье аборигена меньше нуля, он умирает и битва заканчивается
+        if (getHealth() <= 0 ){ 
          setStat(Status.DEAD);
          break;
         }
@@ -60,13 +60,14 @@ public class Aborigine extends Human implements StartFightWithPoliceman, TakeWea
   @Override
   public void setStat(Status stat) {
     super.setStat(stat);
+    Team1 t1 = new Team1();
     if (stat == Status.DEAD){
       System.out.println(getName() + " is dead. He deserved it");
-      Team1.newDeadAborigine();
+      t1.newDeadAborigine();
     }
     if (stat == Status.IN_CAPTIVITY){
       System.out.println(getName() + " in captivity. He will tell us everything");
-      Team1.newCaptiveAborigine();
+      t1.newCaptiveAborigine();
     }
   }
 

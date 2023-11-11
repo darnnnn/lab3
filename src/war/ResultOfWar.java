@@ -21,10 +21,12 @@ public class ResultOfWar{
     }
   }
 
-	public void result() { 
-	   System.out.println("Amount of dead aborigines is " + Team1.getAmountOfDeadAborigines() + "\nAmount of captive aborigines is " + Team1.getAmountOfCaptiveAborigines() + "\nAmount of dead policemans is " + Team2.getAmountOfDeadPolicemans());
+	public void result() {
+     Team1 t1 = new Team1(); 
+     Team2 t2 = new Team2();
+	   System.out.println("Amount of dead aborigines is " + t1.getAmountOfDeadAborigines() + "\nAmount of captive aborigines is " + t1.getAmountOfCaptiveAborigines() + "\nAmount of dead policemans is " + t2.getAmountOfDeadPolicemans());
        
-       Team1.get().forEach(a -> checkAlive(a)); // получаю массив всех аборигенов с помощью getTeam1(), для этого массива выполняю метод forEach, с помощью которого для каждого элемента из массива выполняю метод checkAlive()
+       t1.get().forEach(a -> checkAlive(a)); // получаю массив всех аборигенов с помощью get(), для этого массива выполняю метод forEach, с помощью которого для каждого элемента из массива выполняю метод checkAlive()
        switch(namesOfAliveAborigines.size()){
          case 0 :
          	break;
@@ -36,7 +38,7 @@ public class ResultOfWar{
          	break;
        }
        
-       Team2.get().forEach(p -> checkAlive(p)); 
+       t2.get().forEach(p -> checkAlive(p)); 
        switch(namesOfAlivePolicemans.size()){
          case 0 :
          	break;

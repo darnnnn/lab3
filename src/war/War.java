@@ -1,32 +1,35 @@
 package war;
 
+import java.lang.Thread;
 import teams.*;
 import weapons.*;
 import world.*;
 
 public class War{
-
 	public void go() { 
-    if ( Team1.get().size() != Team2.get().size() ) { 
-  	  System.out.println("You have created unequal teams. You can't start a war"); 
+	  Stop s = new Stop();
+	  Team1 t1 = new Team1();
+	  Team2 t2 = new Team2();
+    if ( t1.get().size() != t2.get().size() ) { 
+      s.stop();
+  	  System.out.println("You have created unequal teams. You can't start a war");
     } else {
-  	  for (int i=0; i < Team1.get().size(); i++) {
+      Choose c = new Choose();
+      World w = new World();
+      ResultOfWar r = new ResultOfWar();
+  	  for (int i=0; i < t1.get().size(); i++) {
   	  	s.stop();
-		(Team1.get().get(i)).takeWeapon(c.randomWeapon()); 
-		(Team2.get().get(i)).takeWeapon(c.randomWeapon());
+		(t1.get().get(i)).takeWeapon(c.randomWeapon()); 
+		(t2.get().get(i)).takeWeapon(c.randomWeapon());
 		  if (Math.random() <= 0.5) { 
-	      (Team1.get().get(i)).startFight(Team2.get().get(i));
+	      (t1.get().get(i)).startFight(t2.get().get(i));
 		  } else {
-	      (Team2.get().get(i)).startFight(Team1.get().get(i));
+	      (t2.get().get(i)).startFight(t1.get().get(i));
 	      }
 	    }
 		s.stop();
-		w.setLocation(Locations.POLICE_STATION);
-		r.result();
+        w.setLocation(Locations.POLICE_STATION);
+        r.result();
 	  }
 	}
-	private Choose c = new Choose();
-	private Stop s = new Stop();
-	private World w = new World();
-	private ResultOfWar r = new ResultOfWar();
 }
