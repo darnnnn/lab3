@@ -5,6 +5,7 @@ import humans.Policeman;
 import teams.Team1;
 import teams.Team2;
 import war.War;
+import nature.Bonfire;
 
 public class Main{
 	public static void main(String[] args){
@@ -13,13 +14,14 @@ public class Main{
 		Aborigine a2 = new Aborigine("Luke", 50, "India");
 		Aborigine a3 = new Aborigine("Daniel", 40, "Brazilia");
 		Aborigine a4 = new Aborigine("Mike", 80);
+		Team1 team1 = new Team1();
+		team1.create(a1, a2, a3, a4);
+        Bonfire bonfire = new Bonfire();
 		Policeman p1 = new Policeman("Officer Legress", 40);
 		Policeman p2 = new Policeman("Officer Joseph Galvez", 75);
 		Policeman p3 = new Policeman("Officer Kate", 45, "France");
 		Policeman p4 = new Policeman("Officer Hopper", 70);
-		Team1 team1 = new Team1();
 		Team2 team2 = new Team2();
-		team1.create(a1, a2, a3, a4);
 	    team2.create(p1, p2, p3, p4);
 	    War war = new War();
 	    war.go();

@@ -15,7 +15,6 @@ public class War{
   	  System.out.println("You have created unequal teams. You can't start a war");
     } else {
       Choose c = new Choose();
-      World w = new World();
       ResultOfWar r = new ResultOfWar();
   	  for (int i=0; i < t1.get().size(); i++) {
   	  	s.stop();
@@ -28,7 +27,7 @@ public class War{
 	      }
 	    }
 		s.stop();
-        w.setLocation(Locations.POLICE_STATION);
+        World.setLocation(Locations.POLICE_STATION);
         r.result();
 	  }
 	}

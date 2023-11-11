@@ -3,7 +3,7 @@ package humans;
 import weapons.*;
 import teams.*;
 
-public class Policeman extends Human implements StartFightWithAborigine, TakeWeapon{
+public class Policeman extends Human implements ActionsOfPoliceman, TakeWeapon{
 
   public Policeman() {
         super();

@@ -3,7 +3,7 @@ package humans;
 import weapons.*;
 import teams.*;
 
-public class Aborigine extends Human implements StartFightWithPoliceman, TakeWeapon{
+public class Aborigine extends Human implements ActionsOfAborigine, TakeWeapon{
 
   public Aborigine() {
         super();
@@ -55,6 +55,10 @@ public class Aborigine extends Human implements StartFightWithPoliceman, TakeWea
         }
       System.out.println(getName() + " has " + getHealth() + " health");
     }
+  }
+
+  public void haveFun(){
+    System.out.println(getName() + " howled and writhed.");
   }
 
   @Override

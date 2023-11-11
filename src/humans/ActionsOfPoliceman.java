@@ -1,5 +1,5 @@
 package humans;
 
-interface StartFightWithAborigine{
+interface ActionsOfPoliceman{
   void startFight(Aborigine a);
 } 

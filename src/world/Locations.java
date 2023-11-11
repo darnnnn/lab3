@@ -1,6 +1,6 @@
- package world;
+package world;
 
 public enum Locations{
-   ISLAND,
+   SWAMP,
    POLICE_STATION
 }
