@@ -58,7 +58,7 @@ public class Aborigine extends Human implements ActionsOfAborigine, TakeWeapon{
   }
 
   public void haveFun(){
-    System.out.println(getName() + " howled and writhed.");
+    System.out.println(getName() + " howled and writhed");
   }
 
   @Override

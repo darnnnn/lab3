@@ -6,6 +6,7 @@ import teams.Team1;
 import teams.Team2;
 import war.War;
 import nature.Bonfire;
+import things.*;
 
 public class Main{
 	public static void main(String[] args){
@@ -16,7 +17,16 @@ public class Main{
 		Aborigine a4 = new Aborigine("Mike", 80);
 		Team1 team1 = new Team1();
 		team1.create(a1, a2, a3, a4);
-        Bonfire bonfire = new Bonfire();
+		Bonfire bonfire = new Bonfire();
+		bonfire.burn();
+		Monolith monolith = new Monolith();
+		monolith.riseUp();
+		Figurine figurine = new Figurine();
+		figurine.rest(monolith);
+		Gallows gallows = new Gallows();
+		gallows.locate();
+		Bodies bodies = new Bodies();
+		bodies.hangDown(gallows);
 		Policeman p1 = new Policeman("Officer Legress", 40);
 		Policeman p2 = new Policeman("Officer Joseph Galvez", 75);
 		Policeman p3 = new Policeman("Officer Kate", 45, "France");
