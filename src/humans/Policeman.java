@@ -2,6 +2,7 @@ package humans;
 
 import weapons.*;
 import teams.*;
+import things.*;
 
 public class Policeman extends Human implements ActionsOfPoliceman, TakeWeapon{
 
@@ -54,6 +55,25 @@ public class Policeman extends Human implements ActionsOfPoliceman, TakeWeapon{
          break;
         }
       System.out.println(getName() + " has " + getHealth() + " health");
+    }
+  }
+
+  public void hear(Sound s){
+    System.out.println(getName() + " heard sound from " + s.getSource());
+  }
+
+  public void see(Hallucinations h){
+    System.out.println(getName() + " saw " + h.getDescription());
+  }
+
+  public void feel(Emotions e){
+    switch (e) {
+    case STUPOR:
+      System.out.println(getName() + " fell into a stupor");
+      break;
+    case COURAGE:
+      System.out.println("A sense of duty prevailed and the " + getName() + " moved forward decisively");
+      break;  
     }
   }
 

@@ -36,5 +36,5 @@ public class Team1 {
 			team1.add(a);
     }
 	}
-
+  
 }

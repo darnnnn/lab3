@@ -26,7 +26,7 @@ public class ResultOfWar{
      Team2 t2 = new Team2();
 	   System.out.println("Amount of dead aborigines is " + t1.getAmountOfDeadAborigines() + "\nAmount of captive aborigines is " + t1.getAmountOfCaptiveAborigines() + "\nAmount of dead policemans is " + t2.getAmountOfDeadPolicemans());
        
-       t1.get().forEach(a -> checkAlive(a)); // получаю массив всех аборигенов с помощью get(), для этого массива выполняю метод forEach, с помощью которого для каждого элемента из массива выполняю метод checkAlive()
+       t1.get().forEach(a -> checkAlive(a)); 
        switch(namesOfAliveAborigines.size()){
          case 0 :
          	break;

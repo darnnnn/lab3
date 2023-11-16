@@ -7,6 +7,10 @@ import teams.Team2;
 import war.War;
 import nature.Bonfire;
 import things.*;
+import java.util.ArrayList;
+import humans.Emotions;
+import exception.*;
+import war.ResultOfWar;
 
 public class Main{
 	public static void main(String[] args){
@@ -33,7 +37,22 @@ public class Main{
 		Policeman p4 = new Policeman("Officer Hopper", 70);
 		Team2 team2 = new Team2();
 	    team2.create(p1, p2, p3, p4);
+	    Sound sound = new Sound();
+        p2.hear(sound);
+        Hallucinations hallucinations = new Hallucinations();
+        p2.see(hallucinations);
+        team2.get().forEach(p -> p.feel(Emotions.STUPOR));
+        team2.get().forEach(p -> p.feel(Emotions.COURAGE));
 	    War war = new War();
-	    war.go();
+	    try{
+	      war.go();
+	      world.setLocation(Locations.POLICE_STATION);
+	      ResultOfWar r = new ResultOfWar();
+	      r.result();
+	    } catch (AmountException err) {
+          System.out.println(err.getMessage());
+	    } catch (TwinsException err) {
+	      System.out.println(err.getMessage());
+	    }
 	  }
 }
