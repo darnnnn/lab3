@@ -7,4 +7,5 @@ interface ActionsOfPoliceman{
   void hear(Sound s);
   void see(Hallucinations h);
   void feel(Emotions e);
+  void take(Figurine f);
 } 

@@ -26,15 +26,15 @@ public class Main{
 		Monolith monolith = new Monolith();
 		monolith.riseUp();
 		Figurine figurine = new Figurine();
-		figurine.rest(monolith);
+		figurine.setPlace("on the top of monolith");
 		Gallows gallows = new Gallows();
 		gallows.locate();
 		Bodies bodies = new Bodies();
 		bodies.hangDown(gallows);
-		Policeman p1 = new Policeman("Officer Legress", 40);
+		Policeman p1 = new Policeman("Officer Legress", 100);
 		Policeman p2 = new Policeman("Officer Joseph Galvez", 75);
 		Policeman p3 = new Policeman("Officer Kate", 45, "France");
-		Policeman p4 = new Policeman("Officer Hopper", 70);
+		Policeman p4 = new Policeman("Officer Hopper", 70 );
 		Team2 team2 = new Team2();
 	    team2.create(p1, p2, p3, p4);
 	    Sound sound = new Sound();
@@ -49,6 +49,7 @@ public class Main{
 	      world.setLocation(Locations.POLICE_STATION);
 	      ResultOfWar r = new ResultOfWar();
 	      r.result();
+          p1.take(figurine);
 	    } catch (AmountException err) {
           System.out.println(err.getMessage());
 	    } catch (TwinsException err) {

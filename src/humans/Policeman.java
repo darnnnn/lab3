@@ -50,10 +50,10 @@ public class Policeman extends Human implements ActionsOfPoliceman, TakeWeapon{
       System.out.println(a.getName() + " has " + a.getHealth() + " health");
       setHealth(getHealth() - 0.5 * a.getAttack());
       System.out.println(a.getName() + " hit " + getName());
-        if (getHealth() <= 0 ){
-         setStat(Status.DEAD);
-         break;
-        }
+      if (getHealth() <= 0 ) {
+        setStat(Status.DEAD);
+        break;
+      }
       System.out.println(getName() + " has " + getHealth() + " health");
     }
   }
@@ -75,6 +75,10 @@ public class Policeman extends Human implements ActionsOfPoliceman, TakeWeapon{
       System.out.println("A sense of duty prevailed and the " + getName() + " moved forward decisively");
       break;  
     }
+  }
+
+  public void take(Figurine f){
+    f.setPlace("in " + getName() + "'s pocket");
   }
 
   @Override 

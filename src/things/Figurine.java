@@ -1,7 +1,11 @@
 package things;
 
 public class Figurine{
-  public void rest(Monolith m){
-	System.out.println("The figurine rested on " + m.getPlace() + " of the monolith");
+  private String place;
+
+  public void setPlace(String place){
+    this.place = place;
+    System.out.println("The figurine is " + place);
   }
+
 }

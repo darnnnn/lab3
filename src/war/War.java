@@ -16,15 +16,12 @@ public class War{
     Stop s = new Stop();
     Choose c = new Choose();
   	for (int i=0; i < t1.get().size(); i++) {
-  	  s.stop();
-		  (t1.get().get(i)).takeWeapon(c.randomWeapon()); 
-		  (t2.get().get(i)).takeWeapon(c.randomWeapon());
-		  if (Math.random() <= 0.5) { 
-	      (t1.get().get(i)).startFight(t2.get().get(i));
-		  } else {
-	      (t2.get().get(i)).startFight(t1.get().get(i));
-	    }
-	  }
-		s.stop();
+  	    s.stop();
+		(t1.get().get(i)).takeWeapon(c.randomWeapon()); 
+		(t2.get().get(i)).takeWeapon(c.randomWeapon());
+		if (Math.random() <= 0.5) t1.get().get(i).startFight(t2.get().get(i));
+		else t2.get().get(i).startFight(t1.get().get(i));
+	}
+    s.stop();
   }
 }
