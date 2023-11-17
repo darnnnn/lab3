@@ -1,7 +1,7 @@
 package array;
-
+import java.util.Arrays;
 @SuppressWarnings("unchecked")
-public class MyArray<T> {
+public class MyArray<T> { 
 
     private T[] array;
 
@@ -18,21 +18,20 @@ public class MyArray<T> {
     }
 
     public void add(T value) {
-        if (checkFull() == array.length) increase();
-        array[checkFull()] = value;
+        if (size() == array.length) increase();
+        array[size()] = value;
     }
 
     public int size(){
-        return checkFull();
-    }
-
-    private int checkFull(){
       int index = 0;
       for (int i=0; i<array.length; i++){
         if (array[i] != null) index++;
       }  
       return index;
     }
+
+   /* public void forEach(Consumer<? super T> action){
+    }*/
 
     private void increase(){
       T[] newArray = Arrays.copyOf(array, array.length*2);

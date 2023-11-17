@@ -1,13 +1,9 @@
 package nature;
-
-import java.util.ArrayList;
-import humans.*;
-import teams.*;
-
+import teams.TeamOfAborigines;
 public class Bonfire{
-  public void burn(){
+  public Bonfire(){
     System.out.println("The fire is burning");
-    Team1 t1 = new Team1();
-    t1.get().forEach(a -> a.haveFun());
+    TeamOfAborigines t1 = new TeamOfAborigines();
+    t1.haveFun();
   }
 }

@@ -1,23 +1,33 @@
 package humans;
 
-import weapons.*;
-import teams.*;
-import things.*;
-
-public class Policeman extends Human implements ActionsOfPoliceman, TakeWeapon{
-
+import interactionWithPoliceman.Emotions;
+import interactionWithPoliceman.Figurine;
+import interactionWithPoliceman.Hallucinations;
+import interactionWithPoliceman.Sound;
+import interfaces.Feel;
+import interfaces.Hear;
+import interfaces.HitAborigine;
+import interfaces.See;
+import interfaces.Take;
+import interfaces.TakeWeapon;
+import weapons.Weapons;
+import exception.DeadException;
+public class Policeman extends Human implements TakeWeapon, HitAborigine, Hear, See, Feel, Take{
   public Policeman() {
         super();
     }
-
   public Policeman(String name, double attack) {
         super(name, attack);
     }
-
   public Policeman(String name, double attack, String country) {
         super(name, attack, country);
-    } 
-
+    }
+  public void setStat(Status stat) {
+    super.setStat(stat);
+    if (stat == Status.DEAD){
+      System.out.println(getName() + " is dead. Press f to pay respect");
+    }
+  }
   public void takeWeapon(Weapons weapon){ 
     switch (weapon) {
     case STICK: 
@@ -34,8 +44,7 @@ public class Policeman extends Human implements ActionsOfPoliceman, TakeWeapon{
       break;
     }
   }
-  
-  public void startFight(Aborigine a){ 
+  public void hitAborigine(Aborigine a){
     while ( a.getHealth() > 0 && getHealth() > 0 ){
       a.setHealth(a.getHealth() - 0.5 * getAttack());
       System.out.println(getName() + " hit " + a.getName());
@@ -57,15 +66,12 @@ public class Policeman extends Human implements ActionsOfPoliceman, TakeWeapon{
       System.out.println(getName() + " has " + getHealth() + " health");
     }
   }
-
   public void hear(Sound s){
     System.out.println(getName() + " heard sound from " + s.getSource());
   }
-
   public void see(Hallucinations h){
     System.out.println(getName() + " saw " + h.getDescription());
   }
-
   public void feel(Emotions e){
     switch (e) {
     case STUPOR:
@@ -76,19 +82,8 @@ public class Policeman extends Human implements ActionsOfPoliceman, TakeWeapon{
       break;  
     }
   }
-
-  public void take(Figurine f){
+  public void take(Figurine f)throws DeadException{
+    if (getStat() == Status.DEAD) throw new DeadException(getName() + " is dead and can't take the figurine");
     f.setPlace("in " + getName() + "'s pocket");
   }
-
-  @Override 
-  public void setStat(Status stat) {
-    super.setStat(stat);
-    Team2 t2 =new Team2();
-    if (stat == Status.DEAD){
-      System.out.println(getName() + " is dead. Press f to pay respect");
-      t2.newDeadPoliceman();
-    }
-  }
-
 }
