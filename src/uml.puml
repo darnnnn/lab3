@@ -1,0 +1,251 @@
+@startuml
+scale max 6000 width
+class Main {
++static void main(String[] args)
+}
+Main --down[#AAA]-o world.World
+Main -down[#AAA]--o humans.Aborigine
+Main -down[#AAA]-o humans.Aborigine
+Main -down[#AAA]--o humans.Aborigine
+Main -down[#AAA]-o humans.Aborigine
+Main --down[#AAA]-o teams.TeamOfAborigines
+Main -down[#AAA]--o nature.Bonfire
+Main -down[#AAA]-o nature.Monolith
+Main -down[#AAA]--o interactionWithPoliceman.Figurine
+Main -down[#AAA]-o nature.Gallows
+'!>10 Main --down[#AAA]-o nature.Bodies
+'!>10 Main -down[#AAA]--o humans.Policeman
+'!>10 Main -down[#AAA]-o humans.Policeman
+'!>10 Main -down[#AAA]--o humans.Policeman
+'!>10 Main -down[#AAA]-o humans.Policeman
+'!>10 Main --down[#AAA]-o teams.TeamOfPolicemen
+'!>10 Main -down[#AAA]--o interactionWithPoliceman.Sound
+'!>10 Main -down[#AAA]-o interactionWithPoliceman.Hallucinations
+'!>10 Main -down[#AAA]--o war.War
+'!>10 Main -down[#AAA]-o result.Result
+
+enum world.Locations {
+SWAMP,
+POLICE_STATION
+}
+
+
+class world.World {
+-Locations location
++void setLocation(Locations location)
+}
+world.World --down[#AAA]-o nature.Island
+
+class weapons.Choose {
++Weapons random()
+
+}
+
+
+enum weapons.Weapons {
+STICK,
+KNIFE,
+REVOLVER
+}
+
+
+class war.MyThread {
++void stop()
+}
+
+
+class war.War {
+-TeamOfAborigines t1
+-TeamOfPolicemen t2
++void go() throws AmountException, TwinsException
+}
+war.War -down[#AAA]--o exception.checking.Amount
+war.War -down[#AAA]-o exception.AmountException
+war.War -down[#AAA]--o exception.checking.Twins
+war.War -down[#AAA]-o exception.TwinsException
+war.War --down[#AAA]-o war.MyThread
+war.War -down[#AAA]--o weapons.Choose
+
+class teams.TeamOfAborigines implements interfaces.HaveFun {
+-ArrayList<Aborigine> team1 = new ArrayList<Aborigine>()
++void haveFun()
+}
+
+
+class teams.TeamOfPolicemen implements interfaces.Feel {
+-ArrayList<Policeman> team2 = new ArrayList<Policeman>()
++void feel(Emotions e)
+}
+
+
+class result.Result implements result.StatusOfPolicemen, result.StatusOfAborigines {
++void show(War war)
+}
+result.Result -down[#AAA]-o result.StatusOfAborigines
+result.Result -down[#AAA]--o result.StatusOfPolicemen
+
+interface result.Lambda {
+int count(int a, int b)
+}
+
+
+interface result.StatusOfAborigines {
+default ArrayList<String> find(TeamOfAborigines t, Status stat)
+}
+
+
+interface result.StatusOfPolicemen {
+default ArrayList<String> find(TeamOfPolicemen t, Status stat)
+}
+
+
+class nature.Bodies {
++void hangDown(Gallows g)
+}
+
+
+class nature.Bonfire {
++void burn(TeamOfAborigines t1)
+}
+
+
+class nature.Gallows {
+-int amount
+}
+
+
+class nature.Island {
+-String description
+-int areaSize
+-int amountOfTrees
++String describe()
+}
+
+
+class nature.Monolith {
+-String material
+-int height
+}
+
+
+interface interfaces.Feel {
+void feel(Emotions e)
+}
+
+
+interface interfaces.HaveFun {
+void haveFun()
+}
+
+
+interface interfaces.Hear {
+void hear(Sound s)
+}
+
+
+interface interfaces.HitAborigine {
+void hitAborigine(Aborigine a)
+}
+
+
+interface interfaces.HitPoliceman {
+void hitPoliceman(Policeman p)
+}
+
+
+interface interfaces.See {
+void see(Hallucinations h)
+}
+
+
+interface interfaces.Take {
+void take(Figurine f) throws DeadException
+}
+
+
+interface interfaces.TakeWeapon {
+void takeWeapon(Weapons weapon)
+}
+
+
+enum interactionWithPoliceman.Emotions {
+STUPOR,
+COURAGE
+}
+
+
+class interactionWithPoliceman.Figurine {
+-String place
+}
+
+
+class interactionWithPoliceman.Hallucinations {
+-String description
+}
+
+
+class interactionWithPoliceman.Sound {
+-String source
+}
+
+
+class humans.Aborigine extends humans.Human implements interfaces.TakeWeapon, interfaces.HitPoliceman, interfaces.HaveFun {
++void takeWeapon(Weapons weapon)
++void hitPoliceman(Policeman p)
++void haveFun()
+}
+
+
+abstract class humans.Human {
+-String name
+-double attack
+-String country
+-double health = 100
+-Status stat = Status.ALIVE
+}
+
+
+class humans.Policeman extends humans.Human implements interfaces.TakeWeapon, interfaces.HitAborigine, interfaces.Hear, interfaces.See, interfaces.Feel, interfaces.Take {
++void takeWeapon(Weapons weapon)
++void hitAborigine(Aborigine a)
++void hear(Sound s)
++void see(Hallucinations h)
++void feel(Emotions e)
++void take(Figurine f) throws DeadException
+}
+humans.Policeman -down[#AAA]-o exception.DeadException
+
+enum humans.Status {
+ALIVE,
+DEAD,
+IN_CAPTIVITY
+}
+
+
+class exception.AmountException extends Exception {
+}
+
+
+class exception.DeadException extends NoSuchElementException {
+}
+
+
+class exception.TwinsException extends Exception {
+}
+
+
+class exception.checking.Amount implements exception.checking.Check {
++boolean check(TeamOfAborigines t1, TeamOfPolicemen t2)
+}
+
+
+interface exception.checking.Check {
+boolean check(TeamOfAborigines t1, TeamOfPolicemen t2)
+}
+
+
+class exception.checking.Twins implements exception.checking.Check {
++boolean check(TeamOfAborigines t1, TeamOfPolicemen t2)
+}
+
+@enduml

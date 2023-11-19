@@ -1,9 +1,8 @@
 package nature;
 import teams.TeamOfAborigines;
 public class Bonfire{
-  public Bonfire(){
+  public void burn(TeamOfAborigines t1){
     System.out.println("The fire is burning");
-    TeamOfAborigines t1 = new TeamOfAborigines();
     t1.haveFun();
   }
 }

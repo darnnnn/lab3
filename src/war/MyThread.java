@@ -1,7 +1,7 @@
 package war;
 import java.lang.Thread;
 public class MyThread{
-	public static void stop(){
+	public void stop(){
 	  try {
         Thread.sleep(2000);
         System.out.println("");

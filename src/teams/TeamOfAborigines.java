@@ -4,10 +4,8 @@ import java.util.Collections;
 import humans.Aborigine;
 import interfaces.HaveFun;
 public class TeamOfAborigines implements HaveFun {
-	private static ArrayList<Aborigine> team1 = new ArrayList<Aborigine>();
-	public TeamOfAborigines(Aborigine...ab){
-        Collections.addAll(team1, ab);
-	}
+	private ArrayList<Aborigine> team1 = new ArrayList<Aborigine>();
+	public TeamOfAborigines(Aborigine...ab){ Collections.addAll(team1, ab); }
 	public ArrayList<Aborigine> get(){
 		return team1;
 	}

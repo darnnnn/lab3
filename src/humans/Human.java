@@ -12,7 +12,7 @@ public abstract class Human{
   public Human(){
     this("Unknown", 0, "unknown");
    }
-  
+
   public Human(String name, double attack){
     this(name, attack, "unknown country");
     }

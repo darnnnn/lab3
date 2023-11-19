@@ -28,21 +28,21 @@ public class Policeman extends Human implements TakeWeapon, HitAborigine, Hear, 
       System.out.println(getName() + " is dead. Press f to pay respect");
     }
   }
-  public void takeWeapon(Weapons weapon){ 
-    switch (weapon) {
-    case STICK: 
-      setAttack(getAttack() - 10); 
-      System.out.println(getName() + " took a useless weapon");
-      break;
-    case KNIFE:
-      setAttack(getAttack() + 10); 
-      System.out.println(getName() + " took a knife!");
-      break;
-    case REVOLVER:
-      setAttack(getAttack() + 30); 
-      System.out.println(getName() + " took a revolver and started shooting!");
-      break;
-    }
+  public void takeWeapon(Weapons weapon){
+      switch (weapon) {
+          case STICK -> {
+              setAttack(getAttack() - 10);
+              System.out.println(getName() + " took a useless weapon");
+          }
+          case KNIFE -> {
+              setAttack(getAttack() + 10);
+              System.out.println(getName() + " took a knife!");
+          }
+          case REVOLVER -> {
+              setAttack(getAttack() + 30);
+              System.out.println(getName() + " took a revolver and started shooting!");
+          }
+      }
   }
   public void hitAborigine(Aborigine a){
     while ( a.getHealth() > 0 && getHealth() > 0 ){
@@ -82,7 +82,7 @@ public class Policeman extends Human implements TakeWeapon, HitAborigine, Hear, 
       break;  
     }
   }
-  public void take(Figurine f)throws DeadException{
+  public void take(Figurine f) throws DeadException{
     if (getStat() == Status.DEAD) throw new DeadException(getName() + " is dead and can't take the figurine");
     f.setPlace("in " + getName() + "'s pocket");
   }
