@@ -1,5 +1,5 @@
 @startuml
-scale max 6000 width
+scale max 8000 width
 class Main {
 +static void main(String[] args)
 }
@@ -96,6 +96,16 @@ default ArrayList<String> find(TeamOfAborigines t, Status stat)
 
 interface result.StatusOfPolicemen {
 default ArrayList<String> find(TeamOfPolicemen t, Status stat)
+}
+
+
+interface result.NamesOfAborigines {
+String get(TeamOfAborigines t, Status s)
+}
+
+
+interface result.NamesOfPolicemen {
+String get(TeamOfPolicemen t, Status s)
 }
 
 

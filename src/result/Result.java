@@ -27,6 +27,7 @@ public class Result implements StatusOfPolicemen, StatusOfAborigines{
         System.out.println(names2.get(war.getTeamOfPolicemen(), Status.ALIVE));
         int sumAlive = sum.count( status1.find(war.getTeamOfAborigines(), Status.ALIVE).size(), status2.find(war.getTeamOfPolicemen(), Status.ALIVE).size() );
         System.out.println("Total survivors: " + sumAlive);
+        System.out.println(names1.get(war.getTeamOfAborigines(), Status.IN_CAPTIVITY));
         System.out.println(names1.get(war.getTeamOfAborigines(), Status.DEAD));
         System.out.println(names2.get(war.getTeamOfPolicemen(), Status.DEAD));
         int sumDead = sum.count( status1.find(war.getTeamOfAborigines(), Status.DEAD).size(), status2.find(war.getTeamOfPolicemen(), Status.DEAD).size() );
@@ -34,7 +35,7 @@ public class Result implements StatusOfPolicemen, StatusOfAborigines{
         int diffAll = diff.count(sumAlive, sumDead);
         if (diffAll > 0) System.out.println("Many people survived");
         if (diffAll == 0) System.out.println("Equal numbers of dead and living");
-        else System.out.println("Too many deaths");
+        if (diffAll < 0) System.out.println("Too many deaths");
     }
 }
 interface Lambda{
