@@ -1,8 +1,8 @@
 package nature;
 public class Island{
-    private String description;
-    private int areaSize;
-    private int amountOfTrees;
+    private final String description;
+    private final int areaSize;
+    private final int amountOfTrees;
     public Island(String description, int areaSize, int amountOfTrees){
         this.description = description;
         this.areaSize = areaSize;

@@ -1,7 +1,7 @@
 package nature;
 public class Monolith{
-	private String material;
-	private int height;
+	private final String material;
+	private final int height;
     public Monolith(String material, int height) {
         this.material = material;
         this.height = height;

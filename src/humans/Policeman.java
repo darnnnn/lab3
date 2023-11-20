@@ -73,14 +73,10 @@ public class Policeman extends Human implements TakeWeapon, HitAborigine, Hear, 
     System.out.println(getName() + " saw " + h.getDescription());
   }
   public void feel(Emotions e){
-    switch (e) {
-    case STUPOR:
-      System.out.println(getName() + " fell into a stupor");
-      break;
-    case COURAGE:
-      System.out.println("A sense of duty prevailed and the " + getName() + " moved forward decisively");
-      break;  
-    }
+      switch (e) {
+          case STUPOR -> System.out.println(getName() + " fell into a stupor");
+          case COURAGE -> System.out.println("A sense of duty prevailed and the " + getName() + " moved forward decisively");
+      }
   }
   public void take(Figurine f) throws DeadException{
     if (getStat() == Status.DEAD) throw new DeadException(getName() + " is dead and can't take the figurine");

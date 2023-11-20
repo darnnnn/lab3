@@ -3,9 +3,9 @@ package humans;
 import java.util.Objects;
 
 public abstract class Human{ 
-  private String name;
+  private final String name;
   private double attack;
-  private String country;
+  private final String country;
   private double health = 100;
   private Status stat = Status.ALIVE; 
 
@@ -21,7 +21,7 @@ public abstract class Human{
     this.name = name;
     this.attack = attack;
     this.country = country;
-    System.out.println(this.toString());
+    System.out.println(this);
    }
 
   public String getName() {

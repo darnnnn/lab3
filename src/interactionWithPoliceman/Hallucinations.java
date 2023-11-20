@@ -1,6 +1,6 @@
 package interactionWithPoliceman;
 public class Hallucinations{
-  private String description;
+  private final String description;
   public Hallucinations(String description){
     this.description = description;
   }

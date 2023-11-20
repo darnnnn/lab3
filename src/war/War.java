@@ -6,8 +6,8 @@ import teams.TeamOfPolicemen;
 import weapons.Choose;
 
 public class War{
-	private TeamOfAborigines t1;
-	private TeamOfPolicemen t2;
+	private final TeamOfAborigines t1;
+	private final TeamOfPolicemen t2;
 	public War(TeamOfAborigines t1, TeamOfPolicemen t2){
 		this.t1 = t1;
 		this.t2 = t2;

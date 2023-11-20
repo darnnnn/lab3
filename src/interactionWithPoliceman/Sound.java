@@ -1,6 +1,6 @@
 package interactionWithPoliceman;
 public class Sound{
-	private String source;
+	private final String source;
 	public Sound(String source){
 		this.source = source;
 	}
