@@ -1,6 +1,5 @@
 @startuml
-'https://plantuml.com/class-diagram
-scale max 4000 width
+scale max 6000 width
 class Main {
 +static void main(String[] args)
 }
@@ -23,6 +22,7 @@ Main -down[#AAA]-o nature.Gallows
 '!>10 Main -down[#AAA]--o interactionWithPoliceman.Sound
 '!>10 Main -down[#AAA]-o interactionWithPoliceman.Hallucinations
 '!>10 Main -down[#AAA]--o war.War
+'!>10 Main -down[#AAA]-o result.Result
 
 enum world.Locations {
 SWAMP,
@@ -32,14 +32,13 @@ POLICE_STATION
 
 class world.World {
 -Locations location
-+World(Locations location)
 +void setLocation(Locations location)
 }
-world.World -down[#AAA]-o nature.Island
+world.World --down[#AAA]-o nature.Island
 
 class weapons.Choose {
--static Random r = new Random()
-+static Weapons randomWeapon()
++Weapons random()
+
 }
 
 
@@ -51,54 +50,52 @@ REVOLVER
 
 
 class war.MyThread {
-+static void stop()
-}
-
-
-class war.Twins {
-+static boolean check(TeamOfAborigines t1, TeamOfPolicemans t2)
++void stop()
 }
 
 
 class war.War {
+-TeamOfAborigines t1
+-TeamOfPolicemen t2
 +void go() throws AmountException, TwinsException
 }
-war.War --down[#AAA]-o teams.TeamOfAborigines
-war.War -down[#AAA]--o teams.TeamOfPolicemans
+war.War -down[#AAA]--o exception.checking.Amount
 war.War -down[#AAA]-o exception.AmountException
-war.War -down[#AAA]--o exception.TwinsException
+war.War -down[#AAA]--o exception.checking.Twins
+war.War -down[#AAA]-o exception.TwinsException
+war.War --down[#AAA]-o war.MyThread
+war.War -down[#AAA]--o weapons.Choose
 
 class teams.TeamOfAborigines implements interfaces.HaveFun {
--static ArrayList<Aborigine> team1 = new ArrayList<Aborigine>()
-+TeamOfAborigines(Aborigine...ab)
-+ArrayList<Aborigine> get()
+-ArrayList<Aborigine> team1 = new ArrayList<Aborigine>()
 +void haveFun()
 }
 
 
-class teams.TeamOfPolicemans implements interfaces.Feel {
--static ArrayList<Policeman> team2 = new ArrayList<Policeman>()
-+TeamOfPolicemans(Policeman...po)
-+ArrayList<Policeman> get()
+class teams.TeamOfPolicemen implements interfaces.Feel {
+-ArrayList<Policeman> team2 = new ArrayList<Policeman>()
 +void feel(Emotions e)
 }
 
 
-class result.Result implements result.StatusOfPolicemans, result.StatusOfAborigines {
-+static void show()
+class result.Result implements result.StatusOfPolicemen, result.StatusOfAborigines {
++void show(War war)
 }
 result.Result -down[#AAA]-o result.StatusOfAborigines
-result.Result --down[#AAA]-o result.StatusOfPolicemans
-result.Result -down[#AAA]--o teams.TeamOfAborigines
-result.Result -down[#AAA]-o teams.TeamOfPolicemans
+result.Result -down[#AAA]--o result.StatusOfPolicemen
+
+interface result.Lambda {
+int count(int a, int b)
+}
+
 
 interface result.StatusOfAborigines {
 default ArrayList<String> find(TeamOfAborigines t, Status stat)
 }
 
 
-interface result.StatusOfPolicemans {
-default ArrayList<String> find(TeamOfPolicemans t, Status stat)
+interface result.StatusOfPolicemen {
+default ArrayList<String> find(TeamOfPolicemen t, Status stat)
 }
 
 
@@ -108,14 +105,12 @@ class nature.Bodies {
 
 
 class nature.Bonfire {
-+Bonfire()
++void burn(TeamOfAborigines t1)
 }
-nature.Bonfire -down[#AAA]--o teams.TeamOfAborigines
+
 
 class nature.Gallows {
 -int amount
-+Gallows(int amount)
-+int getAmount()
 }
 
 
@@ -123,7 +118,6 @@ class nature.Island {
 -String description
 -int areaSize
 -int amountOfTrees
-+Island(String description, int areaSize, int amountOfTrees)
 +String describe()
 }
 
@@ -131,7 +125,6 @@ class nature.Island {
 class nature.Monolith {
 -String material
 -int height
-+Monolith(String material, int height)
 }
 
 
@@ -183,30 +176,20 @@ COURAGE
 
 class interactionWithPoliceman.Figurine {
 -String place
-+Figurine(String place)
-+void setPlace(String place)
 }
 
 
 class interactionWithPoliceman.Hallucinations {
 -String description
-+Hallucinations(String description)
-+String getDescription()
 }
 
 
 class interactionWithPoliceman.Sound {
 -String source
-+Sound(String source)
-+String getSource()
 }
 
 
 class humans.Aborigine extends humans.Human implements interfaces.TakeWeapon, interfaces.HitPoliceman, interfaces.HaveFun {
-+Aborigine()
-+Aborigine(String name, double attack)
-+Aborigine(String name, double attack, String country)
-+void setStat(Status stat)
 +void takeWeapon(Weapons weapon)
 +void hitPoliceman(Policeman p)
 +void haveFun()
@@ -219,33 +202,16 @@ abstract class humans.Human {
 -String country
 -double health = 100
 -Status stat = Status.ALIVE
-+Human()
-+Human(String name, double attack)
-+Human(String name, double attack, String country)
-+String getName()
-+double getAttack()
-+double getHealth()
-+Status getStat()
-+void setAttack(double attack)
-+void setHealth(double health)
-+void setStat(Status stat)
-+String toString()
-+int hashCode()
-+boolean equals(Object o)
 }
 
 
 class humans.Policeman extends humans.Human implements interfaces.TakeWeapon, interfaces.HitAborigine, interfaces.Hear, interfaces.See, interfaces.Feel, interfaces.Take {
-+Policeman()
-+Policeman(String name, double attack)
-+Policeman(String name, double attack, String country)
-+void setStat(Status stat)
 +void takeWeapon(Weapons weapon)
 +void hitAborigine(Aborigine a)
 +void hear(Sound s)
 +void see(Hallucinations h)
 +void feel(Emotions e)
-+void take(Figurine f)throws DeadException
++void take(Figurine f) throws DeadException
 }
 humans.Policeman -down[#AAA]-o exception.DeadException
 
@@ -257,16 +223,29 @@ IN_CAPTIVITY
 
 
 class exception.AmountException extends Exception {
-+AmountException(String message)
 }
 
 
-class exception.DeadException extends Exception {
-+DeadException(String message)
+class exception.DeadException extends NoSuchElementException {
 }
 
 
 class exception.TwinsException extends Exception {
-+TwinsException(String message)
 }
+
+
+class exception.checking.Amount implements exception.checking.Check {
++boolean check(TeamOfAborigines t1, TeamOfPolicemen t2)
+}
+
+
+interface exception.checking.Check {
+boolean check(TeamOfAborigines t1, TeamOfPolicemen t2)
+}
+
+
+class exception.checking.Twins implements exception.checking.Check {
++boolean check(TeamOfAborigines t1, TeamOfPolicemen t2)
+}
+
 @enduml

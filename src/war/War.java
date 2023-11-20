@@ -12,10 +12,10 @@ public class War{
 		this.t1 = t1;
 		this.t2 = t2;
 	}
-	public TeamOfAborigines getTeamA(){
+	public TeamOfAborigines getTeamOfAborigines(){
 		return t1;
 	}
-	public TeamOfPolicemen getTeamP(){
+	public TeamOfPolicemen getTeamOfPolicemen(){
 		return t2;
 	}
 	public void go() throws AmountException, TwinsException{
