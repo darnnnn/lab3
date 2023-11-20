@@ -5,22 +5,22 @@ import teams.TeamOfPolicemen;
 import war.War;
 
 public class Result implements StatusOfPolicemen, StatusOfAborigines{
+    StatusOfAborigines status1 = new StatusOfAborigines() {
+    };
+    StatusOfPolicemen status2 = new StatusOfPolicemen() {
+    };
+    NamesOfAborigines names1 = (t, s) -> {
+        if (s == Status.ALIVE) return "Names of alive aborigines: " +  String.join(", ", status1.find(t, s));
+        if (s == Status.DEAD) return "Names of dead aborigines: " + String.join(", ", status1.find(t, s));
+        else return "Names of captivity aborigines: " + String.join(", ", status1.find(t, s));
+    };
+    NamesOfPolicemen names2 = (t, s) -> {
+        if (s == Status.ALIVE) return "Names of alive policemen: " + String.join(", ", status2.find(t, s));
+        else return "Names of dead policemen: " + String.join(", ", status2.find(t, s));
+    };
+    Lambda sum = (a,b) -> a+b;
+    Lambda diff = (a,b) -> a-b;
     public void show(War war){
-        StatusOfAborigines status1 = new StatusOfAborigines() {
-        };
-        StatusOfPolicemen status2 = new StatusOfPolicemen() {
-        };
-        NamesOfAborigines names1 = (t, s) -> {
-            if (s == Status.ALIVE) return "Names of alive aborigines: " +  String.join(", ", status1.find(t, s));
-            if (s == Status.DEAD) return "Names of dead aborigines: " + String.join(", ", status1.find(t, s));
-            else return "Names of captivity aborigines: " + String.join(", ", status1.find(t, s));
-        };
-        NamesOfPolicemen names2 = (t, s) -> {
-            if (s == Status.ALIVE) return "Names of alive policemen: " + String.join(", ", status2.find(t, s));
-            else return "Names of dead policemen: " + String.join(", ", status2.find(t, s));
-        };
-        Lambda sum = (a,b) -> a+b;
-        Lambda diff = (a,b) -> a-b;
         System.out.println(names1.get(war.getTeamOfAborigines(), Status.ALIVE));
         System.out.println(names2.get(war.getTeamOfPolicemen(), Status.ALIVE));
         int sumAlive = sum.count( status1.find(war.getTeamOfAborigines(), Status.ALIVE).size(), status2.find(war.getTeamOfPolicemen(), Status.ALIVE).size() );
