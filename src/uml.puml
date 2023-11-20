@@ -1,5 +1,5 @@
 @startuml
-scale max 8000 width
+scale max 10000 width
 class Main {
 +static void main(String[] args)
 }
