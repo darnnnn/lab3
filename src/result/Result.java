@@ -13,13 +13,11 @@ public class Result implements StatusOfPolicemen, StatusOfAborigines{
         NamesOfAborigines names1 = (t, s) -> {
             if (s == Status.ALIVE) return "Names of alive aborigines: " +  String.join(", ", status1.find(t, s));
             if (s == Status.DEAD) return "Names of dead aborigines: " + String.join(", ", status1.find(t, s));
-            if (s == Status.IN_CAPTIVITY) return "Names of captivity aborigines: " + String.join(", ", status1.find(t, s));
-            return null;
+            else return "Names of captivity aborigines: " + String.join(", ", status1.find(t, s));
         };
         NamesOfPolicemen names2 = (t, s) -> {
             if (s == Status.ALIVE) return "Names of alive policemen: " + String.join(", ", status2.find(t, s));
-            if (s == Status.DEAD) return "Names of dead policemen: " + String.join(", ", status2.find(t, s));
-            return null;
+            else return "Names of dead policemen: " + String.join(", ", status2.find(t, s));
         };
         Lambda sum = (a,b) -> a+b;
         Lambda diff = (a,b) -> a-b;
