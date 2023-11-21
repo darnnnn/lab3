@@ -4,9 +4,6 @@ import interfaces.HitPoliceman;
 import interfaces.TakeWeapon;
 import weapons.Weapons;
 public class Aborigine extends Human implements TakeWeapon, HitPoliceman, HaveFun{
-  public Aborigine() {
-        super();
-    }
   public Aborigine(String name, double attack) {
         super(name, attack);
     }

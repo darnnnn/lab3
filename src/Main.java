@@ -1,6 +1,6 @@
 import exception.AmountException;
+import exception.ClonesException;
 import exception.DeadException;
-import exception.TwinsException;
 import humans.Aborigine;
 import humans.Policeman;
 import interactionWithPoliceman.Emotions;
@@ -22,7 +22,7 @@ public class Main{
 		World world = new World(Locations.SWAMP);
         Aborigine a1 = new Aborigine("Alex", 40, "Portugal");
 		Aborigine a2 = new Aborigine("Luke", 50, "India");
-		Aborigine a3 = new Aborigine("Daniel", 40, "Brazilia");
+		Aborigine a3 = new Aborigine("Daniel", 40, "Brazil");
 		Aborigine a4 = new Aborigine("Mike", 80);
 		TeamOfAborigines team1 = new TeamOfAborigines(a1, a2, a3, a4);
 		Bonfire bonfire = new Bonfire();
@@ -50,7 +50,7 @@ public class Main{
 		  Result result = new Result();
 		  result.show(war);
           p1.take(figurine);
-	    } catch (AmountException | TwinsException | DeadException err) {
+	    } catch (AmountException | ClonesException | DeadException err) {
           System.out.println(err.getMessage());
 	    }
     }

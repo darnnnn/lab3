@@ -57,12 +57,12 @@ class war.MyThread {
 class war.War {
 -TeamOfAborigines t1
 -TeamOfPolicemen t2
-+void go() throws AmountException, TwinsException
++void go() throws AmountException, ClonesException
 }
 war.War -down[#AAA]--o exception.checking.Amount
 war.War -down[#AAA]-o exception.AmountException
-war.War -down[#AAA]--o exception.checking.Twins
-war.War -down[#AAA]-o exception.TwinsException
+war.War -down[#AAA]--o exception.checking.Clones
+war.War -down[#AAA]-o exception.ClonesException
 war.War --down[#AAA]-o war.MyThread
 war.War -down[#AAA]--o weapons.Choose
 
@@ -240,7 +240,7 @@ class exception.DeadException extends NoSuchElementException {
 }
 
 
-class exception.TwinsException extends Exception {
+class exception.ClonesException extends Exception {
 }
 
 
@@ -248,14 +248,13 @@ class exception.checking.Amount implements exception.checking.Check {
 +boolean check(TeamOfAborigines t1, TeamOfPolicemen t2)
 }
 
-
-interface exception.checking.Check {
-boolean check(TeamOfAborigines t1, TeamOfPolicemen t2)
+class exception.checking.Clones implements exception.checking.Check {
++boolean check(TeamOfAborigines t1, TeamOfPolicemen t2)
 }
 
 
-class exception.checking.Twins implements exception.checking.Check {
-+boolean check(TeamOfAborigines t1, TeamOfPolicemen t2)
+interface exception.checking.Check {
+boolean check(TeamOfAborigines t1, TeamOfPolicemen t2)
 }
 
 @enduml

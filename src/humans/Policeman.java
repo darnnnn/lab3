@@ -13,9 +13,6 @@ import interfaces.TakeWeapon;
 import weapons.Weapons;
 import exception.DeadException;
 public class Policeman extends Human implements TakeWeapon, HitAborigine, Hear, See, Feel, Take{
-  public Policeman() {
-        super();
-    }
   public Policeman(String name, double attack) {
         super(name, attack);
     }

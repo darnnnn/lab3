@@ -7,12 +7,7 @@ public abstract class Human{
   private double attack;
   private final String country;
   private double health = 100;
-  private Status stat = Status.ALIVE; 
-
-  public Human(){
-    this("Unknown", 0, "unknown");
-   }
-
+  private Status stat = Status.ALIVE;
   public Human(String name, double attack){
     this(name, attack, "unknown country");
     }
@@ -68,7 +63,7 @@ public abstract class Human{
   @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Human)) return false; //I don’t use the getClass() method, since further (in the Result class) it is necessary to compare the Aborigine and Policeman classes
+        if (o == null || getClass()!=o.getClass()) return false;
         Human that = (Human) o;
         return attack == that.attack && Objects.equals(name, that.name) && Objects.equals(country, that.country);
     }

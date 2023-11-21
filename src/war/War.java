@@ -18,11 +18,11 @@ public class War{
 	public TeamOfPolicemen getTeamOfPolicemen(){
 		return t2;
 	}
-	public void go() throws AmountException, TwinsException{
+	public void go() throws AmountException, ClonesException{
 		Amount amount = new Amount();
 		if (amount.check(t1,t2)) throw new AmountException("You have created unequal or empty teams. There are " + t1.get().size() + " people in the Aborigines team, " + t2.get().size() + "  people in the Policemen team.");
-	    Twins twins = new Twins();
-		if (twins.check(t1,t2)) throw new TwinsException("Twins can't fight");
+	    Clones clones = new Clones();
+		if (clones.check(t1,t2)) throw new ClonesException("There are clones on your teams. This is impossible.");
 	    MyThread t = new MyThread();
   	    for (int i=0; i < t1.get().size(); i++) {
 			  t.stop();
