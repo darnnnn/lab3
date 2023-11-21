@@ -68,7 +68,7 @@ public abstract class Human{
   @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Human)) return false;
+        if (!(o instanceof Human)) return false; //I don’t use the getClass() method, since further (in the Result class) it is necessary to compare the Aborigine and Policeman classes
         Human that = (Human) o;
         return attack == that.attack && Objects.equals(name, that.name) && Objects.equals(country, that.country);
     }
