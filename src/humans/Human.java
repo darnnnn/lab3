@@ -1,8 +1,6 @@
 package humans;
-
 import interfaces.Hit;
 import interfaces.TakeWeapon;
-
 import java.util.Objects;
 
 public abstract class Human implements Hit, TakeWeapon {
@@ -55,7 +53,7 @@ public abstract class Human implements Hit, TakeWeapon {
   }
 
   public void hit(Human h){
-    while ( h.getHealth() > 0 && getHealth() > 0 ){
+    while (getStat() == Status.ALIVE && h.getStat() == Status.ALIVE){
       h.setHealth(h.getHealth() - 0.5 * getAttack());
       System.out.println(getName() + " hit " + h.getName());
       if (h instanceof Aborigine && h.getHealth() < 20 && h.getHealth() > 0) {
@@ -70,6 +68,7 @@ public abstract class Human implements Hit, TakeWeapon {
       h.hit(this);
     }
   }
+
   @Override
     public String toString() { 
      return name + " from " + country + " with attack level " + attack + " appeared";

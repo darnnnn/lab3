@@ -1,5 +1,4 @@
 package result;
-import humans.Aborigine;
 import humans.Human;
 import teams.Team;
 import humans.Status;

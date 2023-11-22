@@ -1,7 +1,7 @@
 package humans;
 import interfaces.HaveFun;
-import interfaces.TakeWeapon;
 import weapons.Weapons;
+
 public class Aborigine extends Human implements HaveFun{
   public Aborigine(String name, double attack) {
         super(name, attack);

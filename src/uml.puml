@@ -13,16 +13,7 @@ Main -down[#AAA]--o nature.Bonfire
 Main -down[#AAA]-o nature.Monolith
 Main -down[#AAA]--o interactionWithPoliceman.Figurine
 Main -down[#AAA]-o nature.Gallows
-'!>10 Main --down[#AAA]-o nature.Bodies
-'!>10 Main -down[#AAA]--o humans.Policeman
-'!>10 Main -down[#AAA]-o humans.Policeman
-'!>10 Main -down[#AAA]--o humans.Policeman
-'!>10 Main -down[#AAA]-o humans.Policeman
-'!>10 Main --down[#AAA]-o teams.TeamOfPolicemen
-'!>10 Main -down[#AAA]--o interactionWithPoliceman.Sound
-'!>10 Main -down[#AAA]-o interactionWithPoliceman.Hallucinations
-'!>10 Main -down[#AAA]--o war.War
-'!>10 Main -down[#AAA]-o result.Result
+
 
 enum world.Locations {
 SWAMP,
@@ -32,7 +23,6 @@ POLICE_STATION
 
 class world.World {
 -Locations location
-+void setLocation(Locations location)
 }
 world.World --down[#AAA]-o nature.Island
 
@@ -66,46 +56,38 @@ war.War -down[#AAA]-o exception.ClonesException
 war.War --down[#AAA]-o war.MyThread
 war.War -down[#AAA]--o weapons.Choose
 
-class teams.TeamOfAborigines implements interfaces.HaveFun {
--ArrayList<Aborigine> team1 = new ArrayList<Aborigine>()
+abstract class teams.Team<H extends humans.Human> {
+-final ArrayList<H> team = new ArrayList<>()
+}
+
+class teams.TeamOfAborigines extends teams.Team implements interfaces.HaveFun {
 +void haveFun()
 }
 
 
-class teams.TeamOfPolicemen implements interfaces.Feel {
--ArrayList<Policeman> team2 = new ArrayList<Policeman>()
+class teams.TeamOfPolicemen extends teams.Team implements interfaces.Feel {
 +void feel(Emotions e)
 }
 
 
-class result.Result implements result.StatusOfPolicemen, result.StatusOfAborigines {
+
+class result.Result implements result.FindStatus {
 +void show(War war)
 }
-result.Result -down[#AAA]-o result.StatusOfAborigines
-result.Result -down[#AAA]--o result.StatusOfPolicemen
 
-interface result.Lambda {
+interface result.FindStatus<T extends teams.Team> {
+default ArrayList<String> find(T t, Status stat)
+}
+
+result.Result -down[#AAA]-o result.FindStatus
+
+interface result.Function {
 int count(int a, int b)
 }
 
 
-interface result.StatusOfAborigines {
-default ArrayList<String> find(TeamOfAborigines t, Status stat)
-}
-
-
-interface result.StatusOfPolicemen {
-default ArrayList<String> find(TeamOfPolicemen t, Status stat)
-}
-
-
-interface result.NamesOfAborigines {
-String get(TeamOfAborigines t, Status s)
-}
-
-
-interface result.NamesOfPolicemen {
-String get(TeamOfPolicemen t, Status s)
+interface result.GetNames<T extends teams.Team> {
+String get(T t, Status s)
 }
 
 
@@ -121,6 +103,7 @@ class nature.Bonfire {
 
 class nature.Gallows {
 -int amount
++ void locate()
 }
 
 
@@ -135,6 +118,7 @@ class nature.Island {
 class nature.Monolith {
 -String material
 -int height
++ void riseUp()
 }
 
 
@@ -153,13 +137,8 @@ void hear(Sound s)
 }
 
 
-interface interfaces.HitAborigine {
-void hitAborigine(Aborigine a)
-}
-
-
-interface interfaces.HitPoliceman {
-void hitPoliceman(Policeman p)
+interface interfaces.Hit {
+void hit(Human h)
 }
 
 
@@ -199,25 +178,24 @@ class interactionWithPoliceman.Sound {
 }
 
 
-class humans.Aborigine extends humans.Human implements interfaces.TakeWeapon, interfaces.HitPoliceman, interfaces.HaveFun {
+class humans.Aborigine extends humans.Human implements interfaces.HaveFun {
 +void takeWeapon(Weapons weapon)
-+void hitPoliceman(Policeman p)
 +void haveFun()
 }
 
 
-abstract class humans.Human {
+abstract class humans.Human implements interfaces.Hit, interfaces.TakeWeapon{
 -String name
 -double attack
 -String country
 -double health = 100
 -Status stat = Status.ALIVE
++void hit(Human h)
 }
 
 
-class humans.Policeman extends humans.Human implements interfaces.TakeWeapon, interfaces.HitAborigine, interfaces.Hear, interfaces.See, interfaces.Feel, interfaces.Take {
+class humans.Policeman extends humans.Human implements interfaces.Hear, interfaces.See, interfaces.Feel, interfaces.Take {
 +void takeWeapon(Weapons weapon)
-+void hitAborigine(Aborigine a)
 +void hear(Sound s)
 +void see(Hallucinations h)
 +void feel(Emotions e)

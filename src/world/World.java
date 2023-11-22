@@ -2,9 +2,7 @@ package world;
 import nature.Island;
 public class World{
 	private Locations location;
-	public World(Locations location){
-		setLocation(location);
-    }
+	public World(Locations location){ setLocation(location); }
 	public void setLocation(Locations location){
 		this.location = location;
         switch (location) {

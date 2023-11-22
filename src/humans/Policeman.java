@@ -1,5 +1,4 @@
 package humans;
-
 import interactionWithPoliceman.Emotions;
 import interactionWithPoliceman.Figurine;
 import interactionWithPoliceman.Hallucinations;
@@ -8,9 +7,9 @@ import interfaces.Feel;
 import interfaces.Hear;
 import interfaces.See;
 import interfaces.Take;
-import interfaces.TakeWeapon;
 import weapons.Weapons;
 import exception.DeadException;
+
 public class Policeman extends Human implements Hear, See, Feel, Take{
   public Policeman(String name, double attack) {
         super(name, attack);

@@ -28,8 +28,10 @@ public class Main{
 		Bonfire bonfire = new Bonfire();
 		bonfire.burn(team1);
 		Monolith monolith = new Monolith("granite", 8);
+		monolith.riseUp();
 		Figurine figurine = new Figurine("on the top of monolith");
 		Gallows gallows = new Gallows(10);
+		gallows.locate();
 		Bodies bodies = new Bodies();
 		bodies.hangDown(gallows);
 		Policeman p1 = new Policeman("Officer Legress", 50);

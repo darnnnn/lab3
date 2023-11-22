@@ -1,13 +1,9 @@
 package teams;
-import java.util.ArrayList;
-import java.util.Collections;
 import humans.Aborigine;
 import interfaces.HaveFun;
-public class TeamOfAborigines implements HaveFun {
-	private final ArrayList<Aborigine> team1 = new ArrayList<>();
-	public TeamOfAborigines(Aborigine...ab){ Collections.addAll(team1, ab); }
-	public ArrayList<Aborigine> get(){
-		return team1;
+public class TeamOfAborigines extends Team<Aborigine> implements HaveFun {
+	public TeamOfAborigines(Aborigine...ab){
+		super(ab);
 	}
-    public void haveFun(){ team1.forEach(a -> a.haveFun()); }
+    public void haveFun(){ getTeam().forEach(Aborigine::haveFun); }
 }
