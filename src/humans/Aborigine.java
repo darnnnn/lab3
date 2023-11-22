@@ -1,9 +1,8 @@
 package humans;
 import interfaces.HaveFun;
-import interfaces.HitPoliceman;
 import interfaces.TakeWeapon;
 import weapons.Weapons;
-public class Aborigine extends Human implements TakeWeapon, HitPoliceman, HaveFun{
+public class Aborigine extends Human implements HaveFun{
   public Aborigine(String name, double attack) {
         super(name, attack);
     }
@@ -34,28 +33,6 @@ public class Aborigine extends Human implements TakeWeapon, HitPoliceman, HaveFu
               System.out.println(getName() + " stole a revolver but doesn't know how to use it");
           }
       }
-  }
-  public void hitPoliceman(Policeman p){
-    while ( p.getHealth() > 0 && getHealth() > 0 ){ 
-      p.setHealth(p.getHealth() - 0.5 * getAttack()); 
-      System.out.println(getName() + " hit " + p.getName());
-        if (p.getHealth() <= 0 ){ 
-         p.setStat(Status.DEAD);
-         break;
-        }
-      System.out.println(p.getName() + " has " + p.getHealth() + " health"); 
-      setHealth(getHealth() - 0.5 * p.getAttack()); 
-      System.out.println(p.getName() + " hit " + getName());
-        if (getHealth() < 20 && getHealth() > 0) { 
-          setStat(Status.IN_CAPTIVITY); 
-          break;
-        }
-        if (getHealth() <= 0 ){ 
-         setStat(Status.DEAD);
-         break;
-        }
-      System.out.println(getName() + " has " + getHealth() + " health");
-    }
   }
   public void haveFun(){
     System.out.println(getName() + " howled and writhed");

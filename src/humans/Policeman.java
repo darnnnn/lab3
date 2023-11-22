@@ -6,13 +6,12 @@ import interactionWithPoliceman.Hallucinations;
 import interactionWithPoliceman.Sound;
 import interfaces.Feel;
 import interfaces.Hear;
-import interfaces.HitAborigine;
 import interfaces.See;
 import interfaces.Take;
 import interfaces.TakeWeapon;
 import weapons.Weapons;
 import exception.DeadException;
-public class Policeman extends Human implements TakeWeapon, HitAborigine, Hear, See, Feel, Take{
+public class Policeman extends Human implements Hear, See, Feel, Take{
   public Policeman(String name, double attack) {
         super(name, attack);
     }
@@ -40,28 +39,6 @@ public class Policeman extends Human implements TakeWeapon, HitAborigine, Hear, 
               System.out.println(getName() + " took a revolver and started shooting!");
           }
       }
-  }
-  public void hitAborigine(Aborigine a){
-    while ( a.getHealth() > 0 && getHealth() > 0 ){
-      a.setHealth(a.getHealth() - 0.5 * getAttack());
-      System.out.println(getName() + " hit " + a.getName());
-        if (a.getHealth() < 20 && a.getHealth() > 0) { 
-          a.setStat(Status.IN_CAPTIVITY); 
-          break;
-        }
-        if (a.getHealth() <= 0 ){
-         a.setStat(Status.DEAD);
-         break;
-        }
-      System.out.println(a.getName() + " has " + a.getHealth() + " health");
-      setHealth(getHealth() - 0.5 * a.getAttack());
-      System.out.println(a.getName() + " hit " + getName());
-      if (getHealth() <= 0 ) {
-        setStat(Status.DEAD);
-        break;
-      }
-      System.out.println(getName() + " has " + getHealth() + " health");
-    }
   }
   public void hear(Sound s){
     System.out.println(getName() + " heard sound from " + s.getSource());

@@ -29,8 +29,8 @@ public class War{
 			  Choose c = new Choose();
 			  (t1.get().get(i)).takeWeapon(c.random());
 			  (t2.get().get(i)).takeWeapon(c.random());
-			  if (Math.random() <= 0.5) t1.get().get(i).hitPoliceman(t2.get().get(i));
-			  else t2.get().get(i).hitAborigine(t1.get().get(i));
+			  if (Math.random() <= 0.5) t1.get().get(i).hit(t2.get().get(i));
+			  else t2.get().get(i).hit(t1.get().get(i));
 	    }
 		t.stop();
     }

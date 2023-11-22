@@ -1,13 +1,17 @@
 package humans;
 
+import interfaces.Hit;
+import interfaces.TakeWeapon;
+
 import java.util.Objects;
 
-public abstract class Human{ 
+public abstract class Human implements Hit, TakeWeapon {
   private final String name;
   private double attack;
   private final String country;
   private double health = 100;
   private Status stat = Status.ALIVE;
+
   public Human(String name, double attack){
     this(name, attack, "unknown country");
     }
@@ -50,6 +54,32 @@ public abstract class Human{
     } 
   }
 
+  public void hit(Human h){
+    while ( h.getHealth() > 0 && getHealth() > 0 ){
+      h.setHealth(h.getHealth() - 0.5 * getAttack());
+      System.out.println(getName() + " hit " + h.getName());
+      if (h instanceof Aborigine && h.getHealth() < 20 && h.getHealth() > 0) {
+        setStat(Status.IN_CAPTIVITY);
+        break;
+      }
+      if (h.getHealth() <= 0 ){
+        h.setStat(Status.DEAD);
+        break;
+      }
+      System.out.println(h.getName() + " has " + h.getHealth() + " health");
+      setHealth(getHealth() - 0.5 * h.getAttack());
+      System.out.println(h.getName() + " hit " + getName());
+      if (this instanceof Aborigine && getHealth() < 20 && getHealth() > 0) {
+        setStat(Status.IN_CAPTIVITY);
+        break;
+      }
+      if (getHealth() <= 0 ){
+        setStat(Status.DEAD);
+        break;
+      }
+      System.out.println(getName() + " has " + getHealth() + " health");
+    }
+  }
   @Override
     public String toString() { 
      return name + " from " + country + " with attack level " + attack + " appeared";
