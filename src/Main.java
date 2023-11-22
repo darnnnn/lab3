@@ -23,7 +23,7 @@ public class Main{
         Aborigine a1 = new Aborigine("Alex", 40, "Portugal");
 		Aborigine a2 = new Aborigine("Luke", 50, "India");
 		Aborigine a3 = new Aborigine("Daniel", 40, "Brazil");
-		Aborigine a4 = new Aborigine("Mike", 80);
+		Aborigine a4 = new Aborigine("Mike", 20);
 		TeamOfAborigines team1 = new TeamOfAborigines(a1, a2, a3, a4);
 		Bonfire bonfire = new Bonfire();
 		bonfire.burn(team1);
@@ -32,7 +32,7 @@ public class Main{
 		Gallows gallows = new Gallows(10);
 		Bodies bodies = new Bodies();
 		bodies.hangDown(gallows);
-		Policeman p1 = new Policeman("Officer Legress", 20);
+		Policeman p1 = new Policeman("Officer Legress", 50);
 		Policeman p2 = new Policeman("Officer Joseph Galvez", 75);
 		Policeman p3 = new Policeman("Officer Kate", 45, "France");
 		Policeman p4 = new Policeman("Officer Hopper", 70 );

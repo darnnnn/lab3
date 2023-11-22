@@ -59,7 +59,7 @@ public abstract class Human implements Hit, TakeWeapon {
       h.setHealth(h.getHealth() - 0.5 * getAttack());
       System.out.println(getName() + " hit " + h.getName());
       if (h instanceof Aborigine && h.getHealth() < 20 && h.getHealth() > 0) {
-        setStat(Status.IN_CAPTIVITY);
+        h.setStat(Status.IN_CAPTIVITY);
         break;
       }
       if (h.getHealth() <= 0 ){
@@ -67,17 +67,7 @@ public abstract class Human implements Hit, TakeWeapon {
         break;
       }
       System.out.println(h.getName() + " has " + h.getHealth() + " health");
-      setHealth(getHealth() - 0.5 * h.getAttack());
-      System.out.println(h.getName() + " hit " + getName());
-      if (this instanceof Aborigine && getHealth() < 20 && getHealth() > 0) {
-        setStat(Status.IN_CAPTIVITY);
-        break;
-      }
-      if (getHealth() <= 0 ){
-        setStat(Status.DEAD);
-        break;
-      }
-      System.out.println(getName() + " has " + getHealth() + " health");
+      h.hit(this);
     }
   }
   @Override
