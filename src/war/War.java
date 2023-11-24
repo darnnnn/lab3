@@ -23,15 +23,13 @@ public class War{
 		if (amount.check(t1,t2)) throw new AmountException("You have created unequal or empty teams. There are " + t1.getTeam().size() + " people in the Aborigines team, " + t2.getTeam().size() + "  people in the Policemen team.");
 	    Clones clones = new Clones();
 		if (clones.check(t1,t2)) throw new ClonesException("There are clones on your teams. This is impossible.");
-	    MyThread t = new MyThread();
   	    for (int i = 0; i < t1.getTeam().size(); i++) {
-			  t.stop();
-			  Choose c = new Choose();
-			  (t1.getTeam().get(i)).takeWeapon(c.random());
-			  (t2.getTeam().get(i)).takeWeapon(c.random());
+			  MyThread.stop();
+			  (t1.getTeam().get(i)).takeWeapon(Choose.random());
+			  (t2.getTeam().get(i)).takeWeapon(Choose.random());
 			  if (Math.random() <= 0.5) t1.getTeam().get(i).hit(t2.getTeam().get(i));
 			  else t2.getTeam().get(i).hit(t1.getTeam().get(i));
 	    }
-		t.stop();
+		MyThread.stop();
     }
 }
