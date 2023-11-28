@@ -53,10 +53,10 @@ public class Policeman extends Human implements TakeWeapon, Hit<Aborigine>, Hear
         }
     }
   public void hear(Sound s){
-    System.out.println(getName() + " heard sound from " + s.toString());
+    System.out.println(getName() + " heard sound from " + s);
   }
   public void see(Hallucinations h){
-    System.out.println(getName() + " saw " + h.toString());
+    System.out.println(getName() + " saw " + h);
   }
   public void take(Figurine f) throws DeadException{
     if (getStat() == Status.DEAD) throw new DeadException(getName() + " is dead and can't take the figurine");

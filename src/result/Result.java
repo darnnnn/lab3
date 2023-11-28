@@ -5,7 +5,7 @@ import teams.TeamOfAborigines;
 import war.War;
 
 public class  Result implements GetNames<Team> {
-    GetNames<Team> names1 = new GetNames<Team>() {
+    GetNames<Team> names1 = new GetNames<>() {
     };
     DisplayNames<Team> names2 = (t, s) ->{
         if (t instanceof TeamOfAborigines) {

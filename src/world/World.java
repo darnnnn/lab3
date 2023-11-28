@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class World{
     private TeamOfAborigines t1;
     private TeamOfPolicemen t2;
-    private ArrayList<Human> humans = new ArrayList<>();
+    private final ArrayList<Human> humans = new ArrayList<>();
 	private Locations location;
     public <T extends Team> void addTeam(T t){
         if (t instanceof TeamOfAborigines) {
@@ -35,11 +35,14 @@ public class World{
         if (!humans.isEmpty()) humans.forEach(h->h.setLocation(location));
         switch (location) {
             case NEW_ORLEANS -> System.out.println("On November 1, 1907, the New Orleans police received desperate reports from the southern areas, swamps and lagoons.");
-            case ROAD -> System.out.println("So, " + t2.getTeam().size() + " policemen, stationed on two carts and a car, went to the scene of the incident, taking with them a trembling squatter as a guide.");
+            case ROAD -> {
+                assert t2 != null;
+                System.out.println("So, " + t2.getTeam().size() + " policemen, stationed on two carts and a car, went to the scene of the incident, taking with them a trembling squatter as a guide.");
+            }
             case FOREST -> System.out.println("When the passing road ended, everyone got out of the carts and cars and splashed through the mud for several miles in complete silence through the gloomy cypress forest, under the covers of which daylight never penetrated.");
             case SWAMP -> {
                 Island island = new Island("grassy, dry", 1, 0);
-                System.out.println("Above the surface of the swamp there was a " + island.toString());
+                System.out.println("Above the surface of the swamp there was a " + island);
             }
             case POLICE_STATION -> System.out.println("The journey was over and the aborigines were sent to the police station");
         }
