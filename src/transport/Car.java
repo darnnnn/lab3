@@ -5,6 +5,6 @@ import humans.Human;
 
 public class Car extends Transport {
     public void go(){
-        if (getNames()!=null)System.out.println(String.join(", ", getNames()) + " got into the car.");
+        if (!getNames().isEmpty())System.out.println(String.join(", ", getNames()) + " got into the car.");
     }
 }

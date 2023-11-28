@@ -8,7 +8,8 @@ public class Island{
         this.areaSize = areaSize;
         this.amountOfTrees = amountOfTrees;
     }
-    public String describe(){ 
+    @Override
+    public String toString(){
      return description + " island with an area of about " + areaSize + " acre and with " + amountOfTrees + " trees";
    }
 }

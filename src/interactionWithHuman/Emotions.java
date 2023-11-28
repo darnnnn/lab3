@@ -1,6 +1,7 @@
 package interactionWithHuman;
 public enum Emotions{
 	FEAR("fear."),
+	DEPRESSION("depression."),
 	STUPOR("stupor."),
 	COURAGE("courage.");
 	private final String emotion;
