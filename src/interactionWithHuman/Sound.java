@@ -1,10 +1,11 @@
-package interactionWithPoliceman;
+package interactionWithHuman;
 public class Sound{
 	private final String source;
 	public Sound(String source){
 		this.source = source;
 	}
-	public String getSource(){
+	@Override
+	public String toString() {
 		return source;
 	}
 }

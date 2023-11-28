@@ -1,12 +1,15 @@
 package humans;
 import interfaces.HaveFun;
+import interfaces.Hit;
+import interfaces.TakeWeapon;
 import weapons.Weapons;
+import world.World;
 
-public class Aborigine extends Human implements HaveFun{
-  public Aborigine(String name, double attack) {
+public class Aborigine extends Human implements TakeWeapon, Hit<Policeman>{
+    public Aborigine(World world, String name, double attack) {
         super(name, attack);
     }
-  public Aborigine(String name, double attack, String country) {
+    public Aborigine(World world, String name, double attack, String country) {
         super(name, attack, country);
     }
   public void setStat(Status stat) {
@@ -34,8 +37,17 @@ public class Aborigine extends Human implements HaveFun{
           }
       }
   }
-  public void haveFun(){
-    System.out.println(getName() + " howled and writhed");
-  }
+    public void hit(Policeman h){
+        while (getStat() == Status.ALIVE && h.getStat() == Status.ALIVE){
+            h.setHealth(h.getHealth() - 0.5 * getAttack());
+            System.out.println(getName() + " hit " + h.getName());
+            if (h.getHealth() <= 0 ){
+                h.setStat(Status.DEAD);
+                break;
+            }
+            System.out.println(h.getName() + " has " + h.getHealth() + " health");
+            h.hit(this);
+        }
+    }
 }    
        

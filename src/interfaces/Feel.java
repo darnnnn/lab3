@@ -1,5 +1,5 @@
 package interfaces;
-import interactionWithPoliceman.Emotions;
+import interactionWithHuman.Emotions;
 public interface Feel{
     void feel(Emotions e);
 }

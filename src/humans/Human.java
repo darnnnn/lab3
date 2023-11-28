@@ -1,14 +1,19 @@
 package humans;
-import interfaces.Hit;
-import interfaces.TakeWeapon;
+import world.Locations;
+
 import java.util.Objects;
 
-public abstract class Human implements Hit, TakeWeapon {
+public abstract class Human {
   private final String name;
   private double attack;
   private final String country;
   private double health = 100;
   private Status stat = Status.ALIVE;
+  private Locations location;
+
+  public Human(String name){
+    this(name, 0, "unknown country");
+  }
 
   public Human(String name, double attack){
     this(name, attack, "unknown country");
@@ -43,35 +48,18 @@ public abstract class Human implements Hit, TakeWeapon {
 
   public void setHealth(double health) {
     this.health = health;
-  } 
+  }
+  public void setLocation(Locations location) {
+    this.location = location;
+  }
 
   public void setStat(Status stat) {
     this.stat = stat;
-    if (stat == Status.ALIVE){
-      System.out.println(name + " is alive"); 
-    } 
-  }
-
-  public void hit(Human h){
-    while (getStat() == Status.ALIVE && h.getStat() == Status.ALIVE){
-      h.setHealth(h.getHealth() - 0.5 * getAttack());
-      System.out.println(getName() + " hit " + h.getName());
-      if (h instanceof Aborigine && h.getHealth() < 20 && h.getHealth() > 0) {
-        h.setStat(Status.IN_CAPTIVITY);
-        break;
-      }
-      if (h.getHealth() <= 0 ){
-        h.setStat(Status.DEAD);
-        break;
-      }
-      System.out.println(h.getName() + " has " + h.getHealth() + " health");
-      h.hit(this);
-    }
   }
 
   @Override
     public String toString() { 
-     return name + " from " + country + " with attack level " + attack + " appeared";
+     return name + " from " + country + " with attack level " + attack + " appeared.";
    }
    
   @Override

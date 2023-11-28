@@ -1,5 +1,5 @@
 package interfaces;
-import interactionWithPoliceman.Sound;
+import interactionWithHuman.Sound;
 public interface Hear {
     void hear(Sound s);
 }

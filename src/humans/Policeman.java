@@ -1,16 +1,13 @@
 package humans;
-import interactionWithPoliceman.Emotions;
-import interactionWithPoliceman.Figurine;
-import interactionWithPoliceman.Hallucinations;
-import interactionWithPoliceman.Sound;
-import interfaces.Feel;
-import interfaces.Hear;
-import interfaces.See;
-import interfaces.Take;
+import interactionWithHuman.Emotions;
+import interactionWithHuman.Figurine;
+import interactionWithHuman.Hallucinations;
+import interactionWithHuman.Sound;
+import interfaces.*;
 import weapons.Weapons;
 import exception.DeadException;
 
-public class Policeman extends Human implements Hear, See, Feel, Take{
+public class Policeman extends Human implements TakeWeapon, Hit<Aborigine>, Hear, See, Take{
   public Policeman(String name, double attack) {
         super(name, attack);
     }
@@ -39,17 +36,27 @@ public class Policeman extends Human implements Hear, See, Feel, Take{
           }
       }
   }
+    public void hit(Aborigine h){
+        while (getStat() == Status.ALIVE && h.getStat() == Status.ALIVE){
+            h.setHealth(h.getHealth() - 0.5 * getAttack());
+            System.out.println(getName() + " hit " + h.getName());
+            if (h.getHealth() < 20 && h.getHealth() > 0) {
+                h.setStat(Status.IN_CAPTIVITY);
+                break;
+            }
+            if (h.getHealth() <= 0 ){
+                h.setStat(Status.DEAD);
+                break;
+            }
+            System.out.println(h.getName() + " has " + h.getHealth() + " health");
+            h.hit(this);
+        }
+    }
   public void hear(Sound s){
-    System.out.println(getName() + " heard sound from " + s.getSource());
+    System.out.println(getName() + " heard sound from " + s.toString());
   }
   public void see(Hallucinations h){
-    System.out.println(getName() + " saw " + h.getDescription());
-  }
-  public void feel(Emotions e){
-      switch (e) {
-          case STUPOR -> System.out.println(getName() + " fell into a stupor");
-          case COURAGE -> System.out.println("A sense of duty prevailed and the " + getName() + " moved forward decisively");
-      }
+    System.out.println(getName() + " saw " + h.toString());
   }
   public void take(Figurine f) throws DeadException{
     if (getStat() == Status.DEAD) throw new DeadException(getName() + " is dead and can't take the figurine");

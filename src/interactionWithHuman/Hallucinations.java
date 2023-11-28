@@ -1,10 +1,11 @@
-package interactionWithPoliceman;
+package interactionWithHuman;
 public class Hallucinations{
   private final String description;
   public Hallucinations(String description){
     this.description = description;
   }
-  public String getDescription(){
+  @Override
+  public String toString() {
     return description;
   }
 }
