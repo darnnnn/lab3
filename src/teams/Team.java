@@ -1,6 +1,6 @@
 package teams;
 import exception.ClonesException;
-import exception.FullException;
+import exception.EmptyException;
 import humans.Human;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,7 +9,7 @@ public abstract class Team<H extends Human> {
     private final ArrayList<H> team = new ArrayList<>();
     @SafeVarargs
     public Team(H...h) {
-        if (h.length < 7) throw new FullException("There are not enough people in the team. The minimum number is 7.");
+        if (h.length < 7) throw new EmptyException("There are not enough people in the team. The minimum number is 7.");
         if (Clones.check(h)) throw new ClonesException("There are clones on your teams. This is impossible.");
         else Collections.addAll(team, h);
     }

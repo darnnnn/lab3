@@ -33,7 +33,7 @@ public class Main{
 		Policeman p6 = new Policeman("Mike", 38, "USA");
 		Policeman p7 = new Policeman("Thomas", 80, "UK");
 		TeamOfPolicemen team2 = new TeamOfPolicemen(p1, p2, p3, p4, p5, p6, p7);
-		world.addTeam(team2);
+		world.addHuman(p1, p2, p3, p4, p5, p6, p7);
 		Squatter s1 = new Squatter("Scott");
 		world.addHuman(s1);
 		s1.feel(Emotions.FEAR);
@@ -75,7 +75,7 @@ public class Main{
 		Aborigine a6 = new Aborigine("Jacob", 70, "Morocco");
 		Aborigine a7 = new Aborigine("Nicholas", 40, "Brazil");
 		TeamOfAborigines team1 = new TeamOfAborigines(a1, a2, a3, a4, a5, a6, a7);
-		world.addTeam(team1);
+		world.addHuman(a1, a2, a3, a4, a5, a6, a7);
 		team1.haveFun(island);
 		Bonfire bonfire = new Bonfire();
 		bonfire.burn();

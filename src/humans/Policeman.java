@@ -15,14 +15,14 @@ public class Policeman extends Human implements TakeWeapon, Hit<Aborigine>, Hear
   public void setStat(Status stat) {
     super.setStat(stat);
     if (stat == Status.DEAD){
-      System.out.println(getName() + " is dead. Press f to pay respect");
+      System.out.println(getName() + " is dead. Press f to pay respect.");
     }
   }
   public void takeWeapon(Weapons weapon){
       switch (weapon) {
           case STICK -> {
               setAttack(getAttack() - 10);
-              System.out.println(getName() + " took a useless weapon");
+              System.out.println(getName() + " took a useless weapon.");
           }
           case KNIFE -> {
               setAttack(getAttack() + 10);
@@ -37,7 +37,7 @@ public class Policeman extends Human implements TakeWeapon, Hit<Aborigine>, Hear
     public void hit(Aborigine h){
         while (getStat() == Status.ALIVE && h.getStat() == Status.ALIVE){
             h.setHealth(h.getHealth() - 0.5 * getAttack());
-            System.out.println(getName() + " hit " + h.getName());
+            System.out.println(getName() + " hit " + h.getName() + ".");
             if (h.getHealth() < 20 && h.getHealth() > 0) {
                 h.setStat(Status.IN_CAPTIVITY);
                 break;
@@ -46,7 +46,7 @@ public class Policeman extends Human implements TakeWeapon, Hit<Aborigine>, Hear
                 h.setStat(Status.DEAD);
                 break;
             }
-            System.out.println(h.getName() + " has " + h.getHealth() + " health");
+            System.out.println(h.getName() + " has " + h.getHealth() + " health.");
             h.hit(this);
         }
     }

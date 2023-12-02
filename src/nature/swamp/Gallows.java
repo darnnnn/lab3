@@ -8,6 +8,6 @@ public class Gallows{
         return amount;
     }
   public void locate(){
-      System.out.println(amount + " gallows are arranged in a circle");
+      System.out.println(amount + " gallows are arranged in a circle.");
   }
 }

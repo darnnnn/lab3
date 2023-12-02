@@ -1,6 +1,6 @@
 package nature.swamp;
 public class Bonfire{
   public void burn() {
-    System.out.println("The fire is burning");
+    System.out.println("The fire is burning.");
   }
 }

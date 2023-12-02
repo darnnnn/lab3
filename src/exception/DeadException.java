@@ -1,7 +1,6 @@
 package exception;
-import java.util.NoSuchElementException;
 
-public class DeadException extends NoSuchElementException{
+public class DeadException extends Exception{
     public DeadException(String message){
         super(message);
     }

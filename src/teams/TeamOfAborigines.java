@@ -10,7 +10,7 @@ public class TeamOfAborigines extends Team<Aborigine> implements HaveFun {
 		super(ab);
 	}
     public void haveFun(Island island){
-		GetNames<Team> names = new GetNames<>() {
+		GetNames names = new GetNames() {
 		};
 		System.out.println(String.join(", ", names.get(this, Status.ALIVE)) + " trampled, howled and writhed on " + island + ".");
 	}

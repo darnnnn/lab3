@@ -7,6 +7,6 @@ public class Monolith{
         this.height = height;
     }
     public void riseUp(){
-        System.out.println(height + "-foot tall " + material + " monolith towered above them");
+        System.out.println(height + "-foot tall " + material + " monolith towered above them.");
     }
 }
