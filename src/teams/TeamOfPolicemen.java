@@ -18,18 +18,18 @@ import transport.Car;
 import transport.Waggon;
 
 public class TeamOfPolicemen extends Team<Policeman> implements Feel, GetIntoTpansport, GoInForest {
-	public TeamOfPolicemen(Policeman...po) throws FullException, ClonesException {
+	public TeamOfPolicemen(Policeman...po) {
 		super(po);
 	}
 	public void feel(Emotions e){
 		GetNames<Team> names = new GetNames<>() {
 		};
-		System.out.println(String.join(", ", names.get(this, Status.ALIVE)) + " feel " + e);
+		System.out.println(String.join(", ", names.get(this, Status.ALIVE)) + " feel " + e + ".");
 	}
 	public void hear(Sound s){
 		GetNames<Team> names = new GetNames<>() {
 		};
-		System.out.println(String.join(", ", names.get(this, Status.ALIVE)) + " hear sound from " + s);
+		System.out.println(String.join(", ", names.get(this, Status.ALIVE)) + " heard " + s + ".");
 	}
 	public void getIntoTpansport(Car car, Waggon w1, Waggon w2){
 		getTeam().forEach(p->{

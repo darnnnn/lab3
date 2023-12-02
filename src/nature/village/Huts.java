@@ -1,7 +1,11 @@
 package nature.village;
 
 public class Huts {
-    public Huts(){
-        System.out.println("Finally, a miserable bunch of huts appeared.");
+    private int amount;
+    public int getAmount(){
+        return amount;
+    }
+    public Huts(int amount){
+        System.out.println("A miserable bunch of " + amount + " huts appeared.");
     }
 }

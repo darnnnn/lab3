@@ -6,6 +6,6 @@ public class Sound{
 	}
 	@Override
 	public String toString() {
-		return source;
+		return "sound from " + source;
 	}
 }

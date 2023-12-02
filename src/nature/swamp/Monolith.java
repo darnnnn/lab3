@@ -1,4 +1,4 @@
-package nature;
+package nature.swamp;
 public class Monolith{
 	private final String material;
 	private final int height;

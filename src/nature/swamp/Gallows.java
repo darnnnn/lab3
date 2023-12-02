@@ -1,4 +1,4 @@
-package nature;
+package nature.swamp;
 public class Gallows{
   private final int amount;
   public Gallows(int amount){

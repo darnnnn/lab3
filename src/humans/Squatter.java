@@ -11,7 +11,7 @@ public class Squatter extends Human implements Feel, GetIntoTpansport {
         super(name, 0, "unknown country");
     }
     public void feel(Emotions e){
-        System.out.println(getName() + " feel " + e);
+        System.out.println(getName() + " feel " + e + ".");
     }
     public void getIntoTpansport(Car car, Waggon w1, Waggon w2){
         if (Math.random()<=0.33) car.fillUp(this);

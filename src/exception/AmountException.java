@@ -1,6 +1,6 @@
 package exception;
 
-public class AmountException extends Exception{
+public class AmountException extends RuntimeException{
   public AmountException(String message){
     super(message);
   }

@@ -1,4 +1,4 @@
-package nature;
+package nature.swamp;
 public class Island{
     private final String description;
     private final int areaSize;

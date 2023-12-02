@@ -1,4 +1,7 @@
 package interfaces;
+
+import nature.swamp.Island;
+
 public interface HaveFun {
-    void haveFun();
+    void haveFun(Island island);
 }

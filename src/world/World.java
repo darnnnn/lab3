@@ -1,6 +1,5 @@
 package world;
 import humans.Human;
-import nature.Island;
 import teams.Team;
 import teams.TeamOfAborigines;
 import teams.TeamOfPolicemen;
@@ -11,7 +10,7 @@ public class World{
     private TeamOfPolicemen t2;
     private final ArrayList<Human> humans = new ArrayList<>();
 	private Locations location;
-    public <T extends Team> void addTeam(T t){
+    public void addTeam(Team t){
         if (t instanceof TeamOfAborigines) {
             this.t1 = (TeamOfAborigines) t;
             t1.getTeam().forEach(h->h.setLocation(location));
@@ -40,10 +39,9 @@ public class World{
                 System.out.println("So, " + t2.getTeam().size() + " policemen, stationed on two carts and a car, went to the scene of the incident, taking with them a trembling squatter as a guide.");
             }
             case FOREST -> System.out.println("When the passing road ended, everyone got out of the carts and cars and splashed through the mud for several miles in complete silence through the gloomy cypress forest, under the covers of which daylight never penetrated.");
-            case SWAMP -> {
-                Island island = new Island("grassy, dry", 1, 0);
-                System.out.println("Above the surface of the swamp there was a " + island);
-            }
+            case VILLAGE -> System.out.println("The police entered the squatters' village.");
+            case UNKNOWN_AREA -> System.out.println("The area that the police were entering now had always had a bad reputation, and white people, as a rule, avoided coming here.");
+            case SWAMP -> System.out.println("Finally, the police reached a place where the trees grew sparsely, and a terrible sight opened up before them.");
             case POLICE_STATION -> System.out.println("The journey was over and the aborigines were sent to the police station");
         }
 	}

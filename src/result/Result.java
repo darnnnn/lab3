@@ -9,12 +9,12 @@ public class  Result implements GetNames<Team> {
     };
     DisplayNames<Team> names2 = (t, s) ->{
         if (t instanceof TeamOfAborigines) {
-            if (s == Status.ALIVE) return "DisplayNames of alive aborigines: " +  String.join(", ", names1.get(t, s));
-            if (s == Status.DEAD) return "DisplayNames of dead aborigines: " + String.join(", ", names1.get(t, s));
-            else return "DisplayNames of captivity aborigines: " + String.join(", ", names1.get(t, s));
+            if (s == Status.ALIVE) return "Names of alive aborigines: " +  String.join(", ", names1.get(t, s));
+            if (s == Status.DEAD) return "Names of dead aborigines: " + String.join(", ", names1.get(t, s));
+            else return "Names of captivity aborigines: " + String.join(", ", names1.get(t, s));
         } else {
-            if (s == Status.ALIVE) return "DisplayNames of alive policemen: " + String.join(", ", names1.get(t, s));
-            else return "DisplayNames of dead policemen: " + String.join(", ", names1.get(t, s));
+            if (s == Status.ALIVE) return "Names of alive policemen: " + String.join(", ", names1.get(t, s));
+            else return "Names of dead policemen: " + String.join(", ", names1.get(t, s));
         }
     };
     Function sum = (a,b) -> a+b;

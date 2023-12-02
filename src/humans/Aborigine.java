@@ -6,10 +6,10 @@ import weapons.Weapons;
 import world.World;
 
 public class Aborigine extends Human implements TakeWeapon, Hit<Policeman>{
-    public Aborigine(World world, String name, double attack) {
+    public Aborigine(String name, double attack) {
         super(name, attack);
     }
-    public Aborigine(World world, String name, double attack, String country) {
+    public Aborigine(String name, double attack, String country) {
         super(name, attack, country);
     }
   public void setStat(Status stat) {

@@ -1,7 +1,4 @@
-import exception.AmountException;
-import exception.ClonesException;
 import exception.DeadException;
-import exception.FullException;
 import humans.Aborigine;
 import humans.Policeman;
 import humans.Squatter;
@@ -9,14 +6,11 @@ import interactionWithHuman.Emotions;
 import interactionWithHuman.Figurine;
 import interactionWithHuman.Hallucinations;
 import interactionWithHuman.Sound;
-import nature.Bodies;
-import nature.Bonfire;
-import nature.Gallows;
-import nature.Monolith;
 import nature.forest.Lichen;
 import nature.forest.Roots;
 import nature.forest.Stones;
 import nature.forest.Wall;
+import nature.swamp.*;
 import nature.village.Huts;
 import nature.village.Inhabitants;
 import teams.TeamOfAborigines;
@@ -28,7 +22,7 @@ import world.Locations;
 import world.World;
 import result.Result;
 public class Main{
-	public static void main(String[] args) throws FullException, ClonesException, AmountException {
+	public static void main(String[] args) {
 		World world = new World();
 		world.setLocation(Locations.NEW_ORLEANS);
 		Policeman p1 = new Policeman("Legress", 50);
@@ -56,25 +50,35 @@ public class Main{
 		waggon1.arrive();
 		waggon2.arrive();
 		world.setLocation(Locations.FOREST);
-		Roots r = new Roots("Terrible");
-		Lichen l= new Lichen("spanish");
-		Stones s = new Stones("wet");
-		Wall w = new Wall("rotten");
-		team2.goInForest(r, l, s, w);
+		Roots roots = new Roots("Terrible");
+		Lichen lichen= new Lichen("spanish");
+		Stones stones = new Stones("wet");
+		Wall wall = new Wall("rotten");
+		team2.goInForest(roots, lichen, stones, wall);
 		world.setLocation(Locations.VILLAGE);
-		Huts huts = new Huts();
+		Huts huts = new Huts(18);
 		Inhabitants inhabitants = new Inhabitants();
 		inhabitants.goOutside(huts);
-        Aborigine a1 = new Aborigine(world, "Alex", 40, "Portugal");
-		Aborigine a2 = new Aborigine(world, "Luke", 50, "India");
-		Aborigine a3 = new Aborigine(world, "Daniel", 40, "Brazil");
-		Aborigine a4 = new Aborigine(world, "Mike", 20);
-		Aborigine a5 = new Aborigine(world, "Simon", 60);
-		Aborigine a6 = new Aborigine(world, "Jacob", 70, "Morocco");
-		Aborigine a7 = new Aborigine(world, "Nicholas", 40, "Brazil");
+		Sound sound1 = new Sound("tomtam");
+		team2.hear(sound1);
+		inhabitants.say("We won't go with you!");
+		world.deleteHuman(s1);
+		p1.goInUnknownArea(team2);
+		world.setLocation(Locations.UNKNOWN_AREA);
+		world.setLocation(Locations.SWAMP);
+		Island island = new Island("grassy, dry", 1, 0);
+        Aborigine a1 = new Aborigine("Alex", 40, "Portugal");
+		Aborigine a2 = new Aborigine("Luke", 50, "India");
+		Aborigine a3 = new Aborigine("Daniel", 40, "Brazil");
+		Aborigine a4 = new Aborigine("Mike", 20);
+		Aborigine a5 = new Aborigine("Simon", 60);
+		Aborigine a6 = new Aborigine("Jacob", 70, "Morocco");
+		Aborigine a7 = new Aborigine("Nicholas", 40, "Brazil");
 		TeamOfAborigines team1 = new TeamOfAborigines(a1, a2, a3, a4, a5, a6, a7);
+		world.addTeam(team1);
+		team1.haveFun(island);
 		Bonfire bonfire = new Bonfire();
-		bonfire.burn(team1);
+		bonfire.burn();
 		Monolith monolith = new Monolith("granite", 8);
 		monolith.riseUp();
 		Figurine figurine = new Figurine();
@@ -83,8 +87,8 @@ public class Main{
 		gallows.locate();
 		Bodies bodies = new Bodies();
 		bodies.hangDown(gallows);
-	    Sound sound = new Sound("forest");
-        p2.hear(sound);
+	    Sound sound2 = new Sound("forest");
+        p2.hear(sound2);
         Hallucinations hallucinations = new Hallucinations("weak beating of large wings, and also the reflection of sparkling eyes and the outline of a huge white mass behind the very distant trees");
         p2.see(hallucinations);
         team2.feel(Emotions.STUPOR);
@@ -95,7 +99,7 @@ public class Main{
 		Result result = new Result();
 		result.show(war);
 	    try{
-          p1.take(figurine);
+          p2.take(figurine);
 	    } catch (DeadException err) {
           System.out.println(err.getMessage());
 	    }

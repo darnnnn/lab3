@@ -1,19 +1,17 @@
 package humans;
-import interactionWithHuman.Emotions;
 import interactionWithHuman.Figurine;
 import interactionWithHuman.Hallucinations;
 import interactionWithHuman.Sound;
 import interfaces.*;
+import teams.TeamOfPolicemen;
 import weapons.Weapons;
 import exception.DeadException;
 
-public class Policeman extends Human implements TakeWeapon, Hit<Aborigine>, Hear, See, Take{
+public class Policeman extends Human implements TakeWeapon, Hit<Aborigine>, Hear, See, Take, GoInUnknownArea{
   public Policeman(String name, double attack) {
         super(name, attack);
     }
-  public Policeman(String name, double attack, String country) {
-        super(name, attack, country);
-    }
+  public Policeman(String name, double attack, String country) { super(name, attack, country); }
   public void setStat(Status stat) {
     super.setStat(stat);
     if (stat == Status.DEAD){
@@ -53,13 +51,17 @@ public class Policeman extends Human implements TakeWeapon, Hit<Aborigine>, Hear
         }
     }
   public void hear(Sound s){
-    System.out.println(getName() + " heard sound from " + s);
+    System.out.println(getName() + " heard " + s + ".");
   }
   public void see(Hallucinations h){
-    System.out.println(getName() + " saw " + h);
+    System.out.println(getName() + " saw " + h + ".");
   }
   public void take(Figurine f) throws DeadException{
-    if (getStat() == Status.DEAD) throw new DeadException(getName() + " is dead and can't take the figurine");
+    if (getStat() == Status.DEAD) throw new DeadException(getName() + " is dead and can't take the figurine.");
     f.setPlace("in " + getName() + "'s pocket");
+  }
+  public void goInUnknownArea(TeamOfPolicemen t){
+      int amount = t.getTeam().size() - 1;
+      System.out.println("Inspector " + getName() +  " and his " + amount + " policemen went on without guides.");
   }
 }

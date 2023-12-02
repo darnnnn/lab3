@@ -4,6 +4,7 @@ public enum Locations{
    ROAD,
    FOREST,
    VILLAGE,
+   UNKNOWN_AREA,
    SWAMP,
    POLICE_STATION
 }
