@@ -3,7 +3,8 @@ import humans.Human;
 import java.util.ArrayList;
 
 public class World{
-    private final ArrayList<Human> humans = new ArrayList<>();
+    private final ArrayList<Human> humans;
+    { humans = new ArrayList<>();}
 	private Locations location;
     public void addHuman(Human...h){
         for (Human human : h) {

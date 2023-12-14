@@ -32,7 +32,7 @@ public class Main{
 		Policeman p5 = new Policeman("Jake", 60);
 		Policeman p6 = new Policeman("Mike", 38, "USA");
 		Policeman p7 = new Policeman("Thomas", 80, "UK");
-		TeamOfPolicemen team2 = new TeamOfPolicemen(p1, p2, p3, p4, p5, p6, p7);
+		TeamOfPolicemen team2 = new TeamOfPolicemen(p1, p2, p3, p4, p5, p6);
 		world.addHuman(p1, p2, p3, p4, p5, p6, p7);
 		Squatter s1 = new Squatter("Scott");
 		world.addHuman(s1);
