@@ -1,6 +1,5 @@
 package humans;
 import world.Locations;
-
 import java.util.Objects;
 
 public abstract class Human {
@@ -48,6 +47,7 @@ public abstract class Human {
 
   public void setHealth(double health) {
     this.health = health;
+    if (this.health>100) this.health=100;
   }
   public void setLocation(Locations location) {
     this.location = location;
@@ -58,13 +58,13 @@ public abstract class Human {
   }
 
   @Override
-    public String toString() { 
-     return name + " from " + country + " with attack level " + attack + " appeared.";
+    public String toString() {
+    return String.format("%s from %s with attack level %s appeared.", name, country, attack);
    }
    
   @Override
    public int hashCode(){
-    return Objects.hash(name, attack, country);
+    return Objects.hash(name, country);
    }
   
   @Override
@@ -72,7 +72,6 @@ public abstract class Human {
         if (this == o) return true;
         if (o == null || getClass()!=o.getClass()) return false;
         Human that = (Human) o;
-        return attack == that.attack && Objects.equals(name, that.name) && Objects.equals(country, that.country);
+        return Objects.equals(name, that.name) && Objects.equals(country, that.country);
     }
-
 }

@@ -1,4 +1,4 @@
-package interfaces;
+package interfaces.for_policeman;
 
 import interactionWithHuman.Hallucinations;
 

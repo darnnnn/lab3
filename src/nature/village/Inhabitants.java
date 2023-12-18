@@ -1,12 +1,11 @@
 package nature.village;
 
-import java.sql.SQLOutput;
-
 public class Inhabitants {
-    public void goOutside(Huts huts){
-        System.out.println("Hysterical inhabitants jumped out of " + huts.getAmount() + " huts to meet them.");
+    public void openDoor(Huts.Door door){
+        door.setCondition(Condition.OPEN);
+        System.out.printf("Hysterical inhabitants jumped out of %s huts to meet them.%n", door.huts().getAmount());
     }
-    public void say(String s){
-        System.out.println("Inhabitants said: " + s);
+    public void say(String phrase){
+        System.out.printf("Inhabitants said: %s%n", phrase);
     }
 }

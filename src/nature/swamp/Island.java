@@ -10,6 +10,6 @@ public class Island{
     }
     @Override
     public String toString(){
-     return description + " island with an area of about " + areaSize + " acre and with " + amountOfTrees + " trees";
+     return String.format("%s island with an area of about %s acre and with %s trees", description, areaSize, amountOfTrees);
    }
 }

@@ -20,6 +20,8 @@ public class World{
 	public void setLocation(Locations location){
 		this.location = location;
         humans.forEach(h->h.setLocation(location));
+	}
+    public void describe(){
         switch (location) {
             case NEW_ORLEANS -> System.out.println("On November 1, 1907, the New Orleans police received desperate reports from the southern areas, swamps and lagoons.");
             case ROAD -> System.out.println("Policemen, stationed on two carts and a car, went to the scene of the incident, taking with them a trembling squatter as a guide.");
@@ -29,5 +31,5 @@ public class World{
             case SWAMP -> System.out.println("Finally, the police reached a place where the trees grew sparsely, and a terrible sight opened up before them.");
             case POLICE_STATION -> System.out.println("The journey was over and the aborigines were sent to the police station.");
         }
-	}
+    }
 }

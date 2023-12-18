@@ -1,9 +1,8 @@
 package humans;
-import interfaces.Hit;
-import interfaces.TakeWeapon;
-import weapons.Weapons;
+import interfaces.for_fight.CanFight;
+import war.Weapons;
 
-public class Aborigine extends Human implements TakeWeapon, Hit<Policeman>{
+public class Aborigine extends Human implements CanFight<Policeman>{
     public Aborigine(String name, double attack) {
         super(name, attack);
     }
@@ -13,37 +12,37 @@ public class Aborigine extends Human implements TakeWeapon, Hit<Policeman>{
   public void setStat(Status stat) {
     super.setStat(stat);
     if (stat == Status.DEAD){
-      System.out.println(getName() + " is dead. He deserved it.");
+      System.out.printf("%s is dead. He deserved it.%n", getName());
     }
     if (stat == Status.IN_CAPTIVITY){
-      System.out.println(getName() + " in captivity. He will tell us everything.");
+      System.out.printf("%s in captivity. He will tell us everything.%n", getName());
     }
   }
   public void takeWeapon(Weapons weapon){
       switch (weapon) {
           case STICK -> {
               setAttack(getAttack() + 30);
-              System.out.println(getName() + " took a stick and flew into a rage.");
+              System.out.printf("%s took a stick and flew into a rage.%n", getName());
           }
           case KNIFE -> {
               setAttack(getAttack() + 10);
-              System.out.println(getName() + " took a knife!!!");
+              System.out.printf("%s took a knife!!!%n", getName());
           }
           case REVOLVER -> {
               setAttack(getAttack() - 20);
-              System.out.println(getName() + " stole a revolver but doesn't know how to use it.");
+              System.out.printf("%s stole a revolver but doesn't know how to use it.%n", getName());
           }
       }
   }
     public void hit(Policeman h){
         while (getStat() == Status.ALIVE && h.getStat() == Status.ALIVE){
             h.setHealth(h.getHealth() - 0.5 * getAttack());
-            System.out.println(getName() + " hit " + h.getName() + ".");
+            System.out.printf("%s hit %s.%n", getName(),  h.getName());
             if (h.getHealth() <= 0 ){
                 h.setStat(Status.DEAD);
                 break;
             }
-            System.out.println(h.getName() + " has " + h.getHealth() + " health.");
+            System.out.printf("%s has %s health.%n", h.getName(), h.getHealth());
             h.hit(this);
         }
     }

@@ -1,4 +1,4 @@
-package weapons;
+package war;
 public enum Weapons{
    STICK,
    KNIFE,

@@ -1,4 +1,4 @@
-package interfaces;
+package interfaces.for_fight;
 
 import humans.Aborigine;
 import humans.Human;

@@ -5,12 +5,12 @@ import humans.Status;
 import java.util.ArrayList;
 
 public interface GetNames {
-    default ArrayList<String> get(Team t, Status stat) {
+    default String get(Team team, Status status) {
         ArrayList<String> names = new ArrayList<>();
-        for(int i = 0; i<t.getTeam().size(); i++){
-            Human h = (Human) t.getTeam().get(i);
-            if (h.getStat() == stat) names.add(h.getName());
+        for(int i = 0; i< team.getTeam().size(); i++){
+            Human h = (Human) team.getTeam().get(i);
+            if (h.getStat() == status) names.add(h.getName());
         }
-        return names;
+        return String.join(", ", names);
     }
 }

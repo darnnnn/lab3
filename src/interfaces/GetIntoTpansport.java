@@ -1,7 +1,6 @@
 package interfaces;
-import transport.Car;
-import transport.Waggon;
+import transport.Transport;
 
 public interface GetIntoTpansport {
-    void getIntoTpansport(Car car, Waggon w1, Waggon w2);
+    void getIntoTpansport(Transport[] t);
 }

@@ -3,20 +3,20 @@ package humans;
 import interactionWithHuman.Emotions;
 import interfaces.Feel;
 import interfaces.GetIntoTpansport;
-import transport.Car;
-import transport.Waggon;
+import transport.Transport;
 
 public class Squatter extends Human implements Feel, GetIntoTpansport {
     public Squatter(String name){
         super(name, 0, "unknown country");
     }
     public void feel(Emotions e){
-        System.out.println(getName() + " feel " + e + ".");
+        setHealth(getHealth()+e.getEffect());
+        System.out.printf("%s feel %s.%n", getName(), e);
     }
-    public void getIntoTpansport(Car car, Waggon w1, Waggon w2){
-        if (Math.random()<=0.33) car.fillUp(this);
-        else if (Math.random()<=0.33) w1.fillUp(this);
-        else w2.fillUp(this);
+    public void getIntoTpansport(Transport[] t){
+        if (Math.random()<=0.33) t[0].fillUp(this);
+        else if (Math.random()<=0.33) t[1].fillUp(this);
+        else t[2].fillUp(this);
     }
 
 }
