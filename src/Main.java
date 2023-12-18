@@ -38,7 +38,7 @@ public class Main{
 		world.addHuman(s1);
 		s1.feel(Emotions.FEAR);
 
-        Car car = new Car();
+		Car car = new Car();
 		Waggon waggon1 = new Waggon();
 		Waggon waggon2 = new Waggon();
 		Transport[] transport = {car, waggon1, waggon2};
@@ -115,7 +115,7 @@ public class Main{
         teamOfPolicemen.feel(Emotions.COURAGE);
 	    War war = new War(teamOfAborigines, teamOfPolicemen);
 		war.go();
-		
+
 		world.setLocation(Locations.POLICE_STATION);
 		world.describe();
 		Result result = new Result();

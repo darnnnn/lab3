@@ -10,10 +10,10 @@ public abstract class Transport implements Movable{
     public ArrayList<Human> getPassengers(){
         return passengers;
     }
-    public ArrayList<String> getNamesOfPassengers(){
+    public String getNamesOfPassengers(){
         ArrayList<String> names = new ArrayList<>();
         passengers.forEach(p->names.add(p.getName()));
-        return names;
+        return String.join(", ", names);
     }
     public void fillUp(Human h){
         passengers.add(h);
