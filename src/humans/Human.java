@@ -47,7 +47,6 @@ public abstract class Human {
 
   public void setHealth(double health) {
     this.health = health;
-    if (this.health>100) this.health=100;
   }
   public void setLocation(Locations location) {
     this.location = location;
