@@ -1,4 +1,8 @@
 package war;
+
+import humans.Aborigine;
+import humans.Policeman;
+
 public enum Weapons{
    STICK(30, -10),
    KNIFE(10, 10),

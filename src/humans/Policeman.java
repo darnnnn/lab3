@@ -23,19 +23,11 @@ public class Policeman extends Human implements CanFight<Aborigine>, Hear, See, 
     }
   }
   public void takeWeapon(Weapons weapon){
+      setAttack(getAttack() + weapon.getAttackForPol());
       switch (weapon) {
-          case STICK -> {
-              setAttack(getAttack() + Weapons.STICK.getAttackForPol());
-              System.out.printf("%s took a useless weapon.%n", getName());
-          }
-          case KNIFE -> {
-              setAttack(getAttack() + Weapons.KNIFE.getAttackForPol());
-              System.out.printf("%s took a knife!%n", getName());
-          }
-          case REVOLVER -> {
-              setAttack(getAttack() + Weapons.REVOLVER.getAttackForPol());
-              System.out.printf("%s took a revolver and started shooting!%n", getName());
-          }
+          case STICK -> System.out.printf("%s took a useless weapon.%n", getName());
+          case KNIFE -> System.out.printf("%s took a knife!%n", getName());
+          case REVOLVER -> System.out.printf("%s took a revolver and started shooting!%n", getName());
       }
   }
   public void hit(Aborigine h){

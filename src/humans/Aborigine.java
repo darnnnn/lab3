@@ -19,19 +19,11 @@ public class Aborigine extends Human implements CanFight<Policeman>{
     }
   }
   public void takeWeapon(Weapons weapon){
+      setAttack(getAttack() + weapon.getAttackForAbor());
       switch (weapon) {
-          case STICK -> {
-              setAttack(getAttack() + Weapons.STICK.getAttackForAbor());
-              System.out.printf("%s took a stick and flew into a rage.%n", getName());
-          }
-          case KNIFE -> {
-              setAttack(getAttack() + Weapons.KNIFE.getAttackForAbor());
-              System.out.printf("%s took a knife!!!%n", getName());
-          }
-          case REVOLVER -> {
-              setAttack(getAttack() + Weapons.REVOLVER.getAttackForAbor());
-              System.out.printf("%s stole a revolver but doesn't know how to use it.%n", getName());
-          }
+          case STICK -> System.out.printf("%s took a stick and flew into a rage.%n", getName());
+          case KNIFE -> System.out.printf("%s took a knife!!!%n", getName());
+          case REVOLVER -> System.out.printf("%s stole a revolver but doesn't know how to use it.%n", getName());
       }
   }
     public void hit(Policeman h){
