@@ -4,14 +4,13 @@ import interactionWithHuman.Figurine;
 import interactionWithHuman.Hallucinations;
 import interactionWithHuman.Sound;
 import interfaces.*;
-import interfaces.for_fight.CanFight;
-import interfaces.for_policeman.*;
+import interfaces.CanFight;
 import teams.TeamOfPolicemen;
 import war.Weapons;
 import exception.DeadException;
 import world.Locations;
 
-public class Policeman extends Human implements CanFight<Aborigine>, Hear, See, TakeFigurine, GoWithTeam, Scream, Stagger, Faint, Feel, SplashWater {
+public class Policeman extends Human implements CanFight<Aborigine>, Feel{
   public Policeman(String name, double attack) {
         super(name, attack);
     }

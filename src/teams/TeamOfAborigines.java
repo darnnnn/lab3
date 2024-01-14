@@ -3,12 +3,11 @@ import humans.Aborigine;
 import humans.Status;
 import interactionWithHuman.Emotions;
 import interfaces.Feel;
-import interfaces.HaveFun;
 import nature.swamp.Bonfire;
 import nature.swamp.Island;
 import result.GetNames;
 
-public class TeamOfAborigines extends Team<Aborigine> implements HaveFun, Feel {
+public class TeamOfAborigines extends Team<Aborigine> implements Feel {
 	public TeamOfAborigines(Aborigine...ab) {
 		super(ab);
 	}

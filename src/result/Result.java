@@ -6,7 +6,8 @@ import teams.TeamOfPolicemen;
 import war.War;
 
 public class Result implements GetNames {
-    GetNames names = new GetNames() {};
+    GetNames names = new GetNames() {
+    };
     DisplayNames <TeamOfAborigines> namesOfAborigines = (team) ->
         String.format("Names of alive aborigines: %s%nNames of dead aborigines: %s%nNames of captivity aborigines: %s", names.get(team, Status.ALIVE), names.get(team, Status.DEAD), names.get(team, Status.IN_CAPTIVITY));
     DisplayNames <TeamOfPolicemen> namesOfPolicemen = (team) ->

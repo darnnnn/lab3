@@ -1,5 +1,5 @@
 package humans;
-import interfaces.for_fight.CanFight;
+import interfaces.CanFight;
 import war.Weapons;
 
 public class Aborigine extends Human implements CanFight<Policeman>{
