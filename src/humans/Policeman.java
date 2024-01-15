@@ -51,9 +51,13 @@ public class Policeman extends Human implements CanFight<Aborigine>, Feel{
   public void see(Hallucinations hallucinations){
       System.out.printf("%s saw %s.%n", getName(), hallucinations);
   }
-  public void takeFigurine(Figurine figurine) throws DeadException{
-    if (getStat() == Status.DEAD) throw new DeadException(String.format("%s is dead and can't take the figurine.", getName()));
-    figurine.setPlace(String.format("in %s's pocket", getName()));
+  public void takeFigurine(Figurine figurine) {
+      try{
+          if (getStat() == Status.DEAD) throw new DeadException(String.format("%s is dead and can't take the figurine.", getName()));
+          figurine.setPlace(String.format("in %s's pocket", getName()));}
+      catch (DeadException err) {
+          System.out.println(err.getMessage());
+      }
   }
   public void feel(Emotions e){
       setHealth(getHealth()+e.getEffect());

@@ -120,10 +120,6 @@ public class Main{
 		world.describe();
 		Result result = new Result();
 		result.show(war);
-	    try{
-          p2.takeFigurine(figurine);
-	    } catch (DeadException err) {
-			System.out.println(err.getMessage());
-	    }
+		p2.takeFigurine(figurine);
     }
 }
